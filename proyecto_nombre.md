@@ -18,11 +18,14 @@
 
 ### Caso de estudio
 
-Maecenas molestie lacus tincidunt, placerat dolor et, ullamcorper erat. Mauris tortor nisl, ultricies ac scelerisque nec, feugiat in nibh. 
+Un emprendimiento de mates artesanales, conocido por sus productos personalizados y de alta calidad, quiere llevar su negocio al siguiente nivel creando una tienda online. Con esta plataforma, los clientes podrán ver los productos, hacer compras de forma fácil y rápida. A medida que el negocio crece, necesitan una forma más eficiente de manejar las ventas, pedidos y consultas de los clientes.
 
-### Definición o planteamiento del problema
+### Definición o Planteamiento del Problema
 
-Pellentesque interdum aliquam magna sit amet rutrum. Nulla aliquam ligula nec quam iaculis dictum. In cursus aliquam cursus. Nullam a sem vel sapien iaculis finibus. Donec aliquam dictum viverra. Etiam ut orci lacus.
+El negocio ha estado creciendo y, con más pedidos y consultas de los clientes, la gestión manual se ha vuelto complicada. Les cuesta mantener el control del stock, responder a las preguntas a tiempo y llevar un registro claro de las ventas. Esto ha empezado a afectar la experiencia del cliente y el manejo interno del negocio.
+
+Por eso, necesitan desarrollar una tienda online que haga todo más simple. Esta plataforma debe permitir organizar los productos por categorías, gestionar las ventas, aceptar diferentes formas de pago y ofrecer un espacio para que los clientes hagan consultas. Además, deberá distinguir entre los usuarios regulares y los administradores, permitiendo a cada uno acceder a las funciones según su rol. La idea es que todo fluya mejor, tanto para el negocio como para los clientes.
+
 
 ## CAPITULO II: MARCO CONCEPTUAL O REFERENCIAL
 

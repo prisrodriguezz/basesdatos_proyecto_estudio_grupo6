@@ -44,7 +44,7 @@ CREATE TABLE Usuario
   nombre VARCHAR(20) NOT NULL,
   apellido VARCHAR(20) NOT NULL,
   dni VARCHAR(8) NOT NULL,
-  email VARCHAR(50) NOT NULL,
+  email VARCHAR(250) NOT NULL,
   domicilio VARCHAR(100) NOT NULL,
   telefono VARCHAR(12),
   idCiudad INT NOT NULL,
@@ -92,10 +92,14 @@ CREATE TABLE VentaDetalle
 -- RESTRICCIONES 
 
 alter table Usuario
-add constraint CK_Usuario_dni check(dni <= 8);
+add constraint CK_Usuario_dni check(LEN(dni) <= 8);
 
 alter table Venta 
 add constraint DF_Venta_fecha default getdate() for fecha;
+
+alter table Producto
+add constraint CK_Producto_precio check(precio > 0);
+
 
 
 

@@ -27,6 +27,12 @@ VALUES (2, 'Porongo', 'Porongo de calabaza', 1200, 1);
 INSERT INTO Producto (idProducto, nombreProducto, descripcion, precio, idCategoria) 
 VALUES (3, 'Bombilla', 'Bombilla de acero inoxidable', 800, 2);
 
+--INSERT TABLA Ciudad
+
+INSERT INTO Ciudad (idCiudad, descripcion) VALUES (1, 'Buenos Aires');
+INSERT INTO Ciudad (idCiudad, descripcion) VALUES (2, 'Córdoba');
+INSERT INTO Ciudad (idCiudad, descripcion) VALUES (3, 'Rosario');
+
 --INSERT TABLE Usuario
 
 INSERT INTO Usuario (idUsuario, nombre, apellido, dni, email, domicilio, telefono, idCiudad) 
@@ -49,14 +55,6 @@ VALUES (2, 'Producto defectuoso', 'Recibí un termo con una tapa rota, ¿cómo l
 
 INSERT INTO Consulta (idConsulta, asunto, mensaje, idUsuario)
 VALUES (3, 'Consulta sobre envío', 'Quisiera saber cuándo llegará mi pedido.', 3);
-
-
-
---INSERT TABLA Ciudad
-
-INSERT INTO Ciudad (idCiudad, descripcion) VALUES (1, 'Buenos Aires');
-INSERT INTO Ciudad (idCiudad, descripcion) VALUES (2, 'Córdoba');
-INSERT INTO Ciudad (idCiudad, descripcion) VALUES (3, 'Rosario');
 
 
 --INSERT TABLA Venta

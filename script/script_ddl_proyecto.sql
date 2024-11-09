@@ -1,35 +1,39 @@
 -- SCRIPT TEMA "Plataforma de ventas online / MateMania"
 -- DEFINNICIÓN DEL MODELO DE DATOS
 
-create database proyecto_DB_v3
+CREATE DATABASE tiendaOnline_BD;
 
-use proyecto_DB_v3
+USE tiendaOnline_BD;
 
+-- ····························································
+-- ······· ESTRUCTURA DE LA BASE DE DATOS ·····················
+-- ····························································
 
 CREATE TABLE Categoria
 (
-  idCategoria INT NOT NULL,
+  idCategoria INT IDENTITY(1,1),
   descripcion VARCHAR(100) NOT NULL,
   constraint PK_Categoria_id PRIMARY KEY (idCategoria)
 );
 
 CREATE TABLE MedioPago
 (
-  idMedioPago INT NOT NULL,
+  idMedioPago INT IDENTITY(1,1),
   descripcion VARCHAR(100) NOT NULL,
   constraint PK_MedioPago_id PRIMARY KEY (idMedioPago)
 );
 
 CREATE TABLE Ciudad
 (
-  idCiudad INT NOT NULL,
+  idCiudad INT IDENTITY(1,1),
   descripcion VARCHAR(30) NOT NULL,
   constraint PK_Ciudad_id PRIMARY KEY (idCiudad)
 );
 
+
 CREATE TABLE Producto
 (
-  idProducto INT NOT NULL,
+  idProducto INT IDENTITY(1,1),
   nombreProducto VARCHAR(50) NOT NULL,
   descripcion VARCHAR(100),
   precio FLOAT NOT NULL,
@@ -38,9 +42,10 @@ CREATE TABLE Producto
   constraint FK_Categoria_id FOREIGN KEY (idCategoria) REFERENCES Categoria(idCategoria)
 );
 
+
 CREATE TABLE Usuario
 (
-  idUsuario INT NOT NULL,
+  idUsuario INT IDENTITY(1,1),
   nombre VARCHAR(20) NOT NULL,
   apellido VARCHAR(20) NOT NULL,
   dni VARCHAR(8) NOT NULL,
@@ -49,15 +54,13 @@ CREATE TABLE Usuario
   telefono VARCHAR(12),
   idCiudad INT NOT NULL,
   constraint PK_Usuario_id PRIMARY KEY (idUsuario),
-  constraint FK_Ciudad_id FOREIGN KEY (idCiudad) REFERENCES Ciudad(idCiudad),
-  constraint UQ_Usuario_dni UNIQUE (dni),
-  constraint UQ_Usuario_email UNIQUE (email),
-  constraint UQ_Usuario_telefono UNIQUE (telefono)
+  constraint FK_Ciudad_id FOREIGN KEY (idCiudad) REFERENCES Ciudad(idCiudad)
 );
+
 
 CREATE TABLE Consulta
 (
-  idConsulta INT NOT NULL,
+  idConsulta INT IDENTITY(1,1),
   asunto VARCHAR(50) NOT NULL,
   mensaje VARCHAR(200) NOT NULL,
   idUsuario INT NOT NULL,
@@ -65,9 +68,10 @@ CREATE TABLE Consulta
   constraint FK_Usuario_id FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
 );
 
+
 CREATE TABLE Venta
 (
-  nroFacturacion INT NOT NULL,
+  nroFacturacion INT IDENTITY(1,1),
   fecha DATE NOT NULL,
   total FLOAT NOT NULL,
   idUsuario INT NOT NULL,
@@ -77,28 +81,17 @@ CREATE TABLE Venta
   constraint FK_MedioPago_id FOREIGN KEY (idMedioPago) REFERENCES MedioPago(idMedioPago)
 );
 
+
 CREATE TABLE VentaDetalle
 (
-  cantidad INT NOT NULL,
-  subTotal FLOAT NOT NULL,
   idProducto INT NOT NULL,
   nroFacturacion INT NOT NULL,
+  cantidad INT NOT NULL,
+  subTotal FLOAT NOT NULL,
   constraint PK_Producto_Facturacion_id PRIMARY KEY (idProducto, nroFacturacion),
   constraint FK_Producto_id FOREIGN KEY (idProducto) REFERENCES Producto(idProducto),
   constraint FK_Venta_nroFacturacion FOREIGN KEY (nroFacturacion) REFERENCES Venta(nroFacturacion)
 );
-
-
--- RESTRICCIONES 
-
-alter table Usuario
-add constraint CK_Usuario_dni check(LEN(dni) <= 8);
-
-alter table Venta 
-add constraint DF_Venta_fecha default getdate() for fecha;
-
-alter table Producto
-add constraint CK_Producto_precio check(precio > 0);
 
 
 

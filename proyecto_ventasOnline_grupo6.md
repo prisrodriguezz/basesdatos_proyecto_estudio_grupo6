@@ -53,6 +53,16 @@ Cabe aclarar, que SQL Server al momento de crear una tabla, este ya crea un índ
 Como la clave primaria suele ser una columna consultada o referenciada con frecuencia, SQL Server aprovecha la estructura de índice agrupado en esa columna si no se ha asignado ya.
 Otra cosa importante sobre los índices agrupados es que ellos modifican físicamente el orden de la base de datos, es por ello que en lso cases de DELETE, UPDATE,INSERT esto es mas costoso en rendimiento, mas si se trata de modificaciones en registros intermedios ya que eso significaría un reordenamiento de los demás registros.
 
+**INDICES NO AGRUPADOS:**
+Así como hablamos de que los agrupados se asemejan a los diccionarios o guías telefónicas, los no agrupados son parecidos al índice de un libro, ya que no modifican físicamente la estructura de la base de datos, solamente indican en que lugar se encuentran a través de punteros. Es por ello que en los casos de DELETE, UPDATE,INSERT, se realizan más rápidamente al no haber modificaciones físicas.
+Antes de crear índices no agrupados, se debe conocer cómo se tiene acceso a los datos. Hay que considerar la posibilidad de utilizar un índice no clúster para consultas que cuentan con los siguientes atributos:
+•	Usan cláusulas JOIN o GROUP BY.
+Crean varios índices no clúster para las columnas que intervienen en operaciones de combinación y de agrupación, y un índice clúster para las columnas de clave externa.
+•	No devuelven conjuntos de resultados de gran tamaño.
+Cree índices filtrados para atender consultas que devuelven un subconjunto bien definido de filas en una tabla grande.
+•	Contienen columnas que suelen incluirse en las condiciones de búsqueda de una consulta:
+ Como una cláusula WHERE, que devuelven coincidencias exactas.
+
 
 
 **TEMA 4 " ---- "** 

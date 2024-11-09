@@ -37,9 +37,9 @@ Ut sed imperdiet risus. Maecenas vestibulum arcu vitae orci pretium pharetra. Su
 Ut sed imperdiet risus. Maecenas vestibulum arcu vitae orci pretium pharetra. Suspendisse potenti. Fusce massa libero, fermentum eget elit in, tincidunt fermentum nunc. Cras imperdiet nisl elit, elementum gravida enim accumsan vel. Sed in sapien quis ante consectetur commodo id non nulla. Aenean lacinia, dolor convallis semper mattis, ante orci elementum nunc, eget feugiat risus neque in urna. Ut ut quam nec risus mollis convallis ornare ac odio. Phasellus efficitur posuere nibh, eget tempor augue pellentesque ac. Ut enim sem, imperdiet non est ut, blandit posuere dui. Curabitur at purus orci. Interdum et malesuada fames ac ante ipsum primis in faucibus.
 
 
-**TEMA 3 " : OPTIMIZACIÓN DE CONSULTAS A TRAVES DE ÍNDICES "** 
+## TEMA 3 " : OPTIMIZACIÓN DE CONSULTAS A TRAVES DE ÍNDICES 
 
-## MANEJOS DE INDICES EN SQL:
+### MANEJOS DE INDICES EN SQL:
 
 Los índices son estructuras que mejoran el rendimiento de las consultas que se realicen, ya que acceden de manera rápida a los datos.
 Los dos tipos en los cuales se dividen son agrupados (“Clusters”)y no agrupados.
@@ -70,13 +70,13 @@ Así como hablamos de que los agrupados se asemejan a los diccionarios o guías 
 
 Antes de crear índices no agrupados, se debe conocer cómo se tiene acceso a los datos. Hay que considerar la posibilidad de utilizar un índice no clúster para consultas que cuentan con los siguientes atributos:
 
-•*	Usan cláusulas **JOIN o GROUP BY**.
+•	Usan cláusulas **JOIN o GROUP BY**.
 Crean varios índices no clúster para las columnas que intervienen en operaciones de combinación y de agrupación, y un índice clúster para las columnas de clave externa.
 
-•*	No devuelven conjuntos de resultados de **gran tamaño**.
+•	No devuelven conjuntos de resultados de **gran tamaño**.
 Cree índices filtrados para atender consultas que devuelven un subconjunto bien definido de filas en una tabla grande.
 
-•*	Contienen columnas que suelen incluirse en las condiciones de búsqueda de una consulta:
+•	Contienen columnas que suelen incluirse en las condiciones de búsqueda de una consulta:
  Como una cláusula ** WHERE**, que devuelven coincidencias exactas.
 
 

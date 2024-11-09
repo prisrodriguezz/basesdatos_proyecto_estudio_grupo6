@@ -34,11 +34,15 @@ Ut sed imperdiet risus. Maecenas vestibulum arcu vitae orci pretium pharetra. Su
 
 
 **TEMA 2: PROCEDIMIENTOS Y FUNCIONES ALMACENADAS** 
+- **PROCEDIMIENTOS ALMACENADOS**
+
 En SQL Server, los **procedimientos almacenados** son conjuntos de instrucciones SQL encapsulados que permiten ejecutar operaciones complejas en la base de datos de manera estructurada y eficiente. Pueden recibir parámetros, devolver valores, y manejar errores. Esta encapsulación es útil para reducir el tráfico de red y controlar los accesos a la base de datos, porque solo se envía una sola instrucción para que se ejecuten varias operaciones, en lugar de tener que enviar cada línea de código, lo que reduce el tráfico entre el cliente y el servidor y mejora la velocidad.
 
 Los procedimientos almacenados aportan varios beneficios: permiten reutilizar y simplificar el código al encapsular tareas comunes de la base de datos, facilitan el mantenimiento (las aplicaciones que los llaman no necesitan conocer los detalles internos) y suelen ser más rápidos gracias a los planes de ejecución precompilados que SQL Server reutiliza para mejorar el rendimiento.
 
 Hay diferentes tipos de procedimientos en SQL Server, como los definidos por el usuario (para tareas específicas), los temporales (usados solo durante una sesión específica), y los del sistema (para mantenimiento y operaciones internas de SQL Server). También existen procedimientos extendidos, que permiten llamar a bibliotecas externas.
+
+- **FUNCIONES ALMACENADAS**
 
 Por otro lado, las **funciones almacenadas** en SQL Server son rutinas que permiten encapsular lógicas de cálculo y operaciones complejas dentro de una función que puede ser reutilizada en múltiples consultas y procedimientos. Existen principalmente tres tipos en SQL Server: escalares, con valores de tabla, y funciones del sistema.
 

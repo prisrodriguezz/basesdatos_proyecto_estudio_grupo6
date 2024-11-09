@@ -1,80 +1,278 @@
 -- SCRIPT "Plataforma de ventas online / MateMania"
 -- INSERCIÓN DEL LOTE DE DATOS
 
+use tiendaOnline_BD;
 
--- INSERSIONES DE DATOS
+-- ····························································
+-- ············· INSERCION DE DATOS ···························
+-- ····························································
 
--- INSERT TABLA Categoria
-INSERT INTO Categoria (idCategoria, descripcion) VALUES (1, 'Mates');
-INSERT INTO Categoria (idCategoria, descripcion) VALUES (2, 'Accesorios');
-INSERT INTO Categoria (idCategoria, descripcion) VALUES (3, 'Bombilla');
-
--- INSERT TABLA MedioPago
-
-INSERT INTO MedioPago (idMedioPago, descripcion) VALUES (1, 'Tarjeta de Crédito');
-INSERT INTO MedioPago (idMedioPago, descripcion) VALUES (2, 'Tarjeta de Débito');
-INSERT INTO MedioPago (idMedioPago, descripcion) VALUES (3, 'Transferencia Bancaria');
-
-
--- INSERT TABLA Producto 
-
-INSERT INTO Producto (idProducto, nombreProducto, descripcion, precio, idCategoria) 
-VALUES (1, 'Termo', 'Termo de acero inoxidable', 2500, 1);
-
-INSERT INTO Producto (idProducto, nombreProducto, descripcion, precio, idCategoria) 
-VALUES (2, 'Porongo', 'Porongo de calabaza', 1200, 1);
-
-INSERT INTO Producto (idProducto, nombreProducto, descripcion, precio, idCategoria) 
-VALUES (3, 'Bombilla', 'Bombilla de acero inoxidable', 800, 2);
-
---INSERT TABLA Ciudad
-
-INSERT INTO Ciudad (idCiudad, descripcion) VALUES (1, 'Buenos Aires');
-INSERT INTO Ciudad (idCiudad, descripcion) VALUES (2, 'Córdoba');
-INSERT INTO Ciudad (idCiudad, descripcion) VALUES (3, 'Rosario');
-
---INSERT TABLE Usuario
-
-INSERT INTO Usuario (idUsuario, nombre, apellido, dni, email, domicilio, telefono, idCiudad) 
-VALUES (1, 'Juan', 'Pérez', '12345678', 'juan.perez@gmail.com', 'Calle Falsa 123', '1122334455', 1);
-
-INSERT INTO Usuario (idUsuario, nombre, apellido, dni, email, domicilio, telefono, idCiudad) 
-VALUES (2, 'María', 'Gómez', '87654321', 'maria.gomez@yahoo.com', 'Avenida Siempre Viva 456', '1198765432', 2);
-
-INSERT INTO Usuario (idUsuario, nombre, apellido, dni, email, domicilio, telefono, idCiudad) 
-VALUES (3, 'Carlos', 'Rodríguez', '56781234', 'carlos.rodriguez@hotmail.com', 'Calle Ejemplo 789', '1166543210', 3);
+-- Insertar 10 categorías 
+INSERT INTO Categoria (descripcion)
+VALUES 
+    ('Mates de madera'),
+    ('Mates de cerámica'),
+    ('Mates de calabaza'),
+    ('Mates de vidrio'),
+    ('Mates de metal'),
+    ('Mates de silicona'),
+    ('Bombillas de acero inoxidable'),
+    ('Bombillas de bronce'),
+    ('Sets de mate y bombilla'),
+    ('Accesorios para mate');
 
 
---INSERT TABLA Consulta
+-- Insertar 6 medios de pago 
+INSERT INTO MedioPago (descripcion)
+VALUES 
+    ('Efectivo'),
+    ('Tarjeta de Crédito'),
+    ('Tarjeta de Débito'),
+    ('Transferencia Bancaria'),
+    ('Mercado Pago'),
+    ('PayPal');
 
-INSERT INTO Consulta (idConsulta, asunto, mensaje, idUsuario)
-VALUES (1, 'Problema con la facturación', 'Tengo un problema con la facturación de mi última compra.', 1);
 
-INSERT INTO Consulta (idConsulta, asunto, mensaje, idUsuario)
-VALUES (2, 'Producto defectuoso', 'Recibí un termo con una tapa rota, ¿cómo lo puedo cambiar?', 2);
+-- Insertar 10 ciudades 
+INSERT INTO Ciudad (descripcion)
+VALUES 
+    ('Buenos Aires'),
+    ('Córdoba'),
+    ('Rosario'),
+    ('Mendoza'),
+    ('La Plata'),
+    ('Corrientes'),
+    ('Salta'),
+    ('Santa Fe'),
+    ('Mar del Plata'),
+    ('Neuquén');
 
-INSERT INTO Consulta (idConsulta, asunto, mensaje, idUsuario)
-VALUES (3, 'Consulta sobre envío', 'Quisiera saber cuándo llegará mi pedido.', 3);
+
+-- Insertar 60 productos con sus respectivas categorías
+INSERT INTO Producto (nombreProducto, descripcion, precio, idCategoria)
+VALUES 
+    -- Mates de madera
+    ('Mate de Algarrobo', 'Mate de madera de algarrobo tallado artesanalmente', 15.99, 1),
+    ('Mate de Palo Santo', 'Mate de madera de palo santo con borde reforzado', 18.50, 1),
+    ('Mate Torneado', 'Mate de madera torneada con decoración artesanal', 12.75, 1),
+    ('Mate de Cedro', 'Mate de cedro, liviano y resistente', 14.00, 1),
+    ('Mate con Virola de Plata', 'Mate de madera de alta calidad con virola de plata', 25.99, 1),
+    
+    -- Mates de cerámica
+    ('Mate Cerámico Esmaltado', 'Mate de cerámica con esmaltado colorido', 8.50, 2),
+    ('Mate Cerámico Rústico', 'Mate de cerámica con diseño rústico', 7.99, 2),
+    ('Mate Cerámico con Pintura a Mano', 'Mate de cerámica pintado a mano', 9.99, 2),
+    ('Mate Cerámico Moderno', 'Mate de cerámica con diseño minimalista', 10.99, 2),
+    ('Mate Cerámico con Boquilla de Acero', 'Mate cerámico con borde de acero inoxidable', 11.50, 2),
+    
+    -- Mates de calabaza
+    ('Mate de Calabaza Clásico', 'Mate de calabaza tradicional, sin decoración', 6.00, 3),
+    ('Mate Calabaza Forrado en Cuero', 'Mate de calabaza con forrado de cuero', 8.00, 3),
+    ('Mate Calabaza Pintado', 'Mate de calabaza con diseño pintado a mano', 9.50, 3),
+    ('Mate Calabaza con Virola', 'Mate de calabaza con virola decorativa', 10.00, 3),
+    ('Mate Calabaza Estilo Criollo', 'Mate de calabaza de estilo criollo', 7.75, 3),
+    
+    -- Mates de vidrio
+    ('Mate de Vidrio con Funda', 'Mate de vidrio con funda de cuero', 12.50, 4),
+    ('Mate Vidrio con Borde Metálico', 'Mate de vidrio con borde metálico', 13.99, 4),
+    ('Mate de Vidrio Termo-resistente', 'Mate de vidrio resistente al calor', 15.50, 4),
+    ('Mate Vidrio Color Ámbar', 'Mate de vidrio color ámbar', 14.00, 4),
+    ('Mate Vidrio con Estampado', 'Mate de vidrio con diseño estampado', 13.25, 4),
+    
+    -- Mates de metal
+    ('Mate de Acero Inoxidable', 'Mate de acero inoxidable, fácil de limpiar', 20.00, 5),
+    ('Mate de Aluminio Colorido', 'Mate de aluminio pintado en colores vivos', 15.00, 5),
+    ('Mate Metálico con Mango de Cuero', 'Mate metálico con funda de cuero', 18.50, 5),
+    ('Mate de Metal Pulido', 'Mate de metal con acabado pulido', 17.25, 5),
+    ('Mate de Acero con Diseño Grabado', 'Mate de acero con diseño grabado', 21.99, 5),
+    
+    -- Mates de silicona
+    ('Mate de Silicona Flexible', 'Mate de silicona en varios colores', 10.50, 6),
+    ('Mate de Silicona Antideslizante', 'Mate de silicona con base antideslizante', 11.00, 6),
+    ('Mate de Silicona para Viaje', 'Mate de silicona, ideal para transportar', 9.75, 6),
+    ('Mate de Silicona Infantil', 'Mate de silicona para niños, sin bordes filosos', 8.50, 6),
+    ('Mate de Silicona con Cuchara Bombilla', 'Mate de silicona con bombilla de cuchara', 10.99, 6),
+    
+    -- Bombillas de acero inoxidable
+    ('Bombilla de Acero Clásica', 'Bombilla de acero inoxidable de diseño clásico', 5.99, 7),
+    ('Bombilla Acero con Filtro Desmontable', 'Bombilla de acero con filtro desmontable', 6.50, 7),
+    ('Bombilla de Acero Extra Larga', 'Bombilla de acero inoxidable larga', 6.75, 7),
+    ('Bombilla de Acero con Diseño Calado', 'Bombilla de acero con calados decorativos', 7.00, 7),
+    ('Bombilla de Acero con Pincel de Limpieza', 'Bombilla de acero inoxidable con pincel', 7.25, 7),
+    
+    -- Bombillas de bronce
+    ('Bombilla de Bronce Tradicional', 'Bombilla de bronce, diseño criollo', 5.50, 8),
+    ('Bombilla Bronce con Virola de Plata', 'Bombilla de bronce con detalles en plata', 8.25, 8),
+    ('Bombilla de Bronce Calada', 'Bombilla de bronce con diseño calado', 6.99, 8),
+    ('Bombilla de Bronce con Filtro', 'Bombilla de bronce con filtro interno', 7.50, 8),
+    ('Bombilla Bronce Maciza', 'Bombilla de bronce de gran durabilidad', 9.00, 8),
+    
+    -- Sets de mate y bombilla
+    ('Set de Madera y Bombilla Acero', 'Set con mate de madera y bombilla de acero', 22.99, 9),
+    ('Set de Cerámica y Bombilla de Acero', 'Set con mate cerámico y bombilla de acero', 19.99, 9),
+    ('Set de Calabaza con Bombilla de Bronce', 'Set con mate de calabaza y bombilla de bronce', 25.50, 9),
+    ('Set de Metal y Bombilla Acero', 'Set con mate metálico y bombilla de acero', 23.50, 9),
+    ('Set Vidrio con Bombilla Acero', 'Set de mate de vidrio y bombilla', 24.75, 9),
+    
+    -- Accesorios para mate
+    ('Pincel para Bombilla', 'Pincel para limpiar bombillas', 2.99, 10),
+    ('Porta Mate de Cuero', 'Porta mate de cuero artesanal', 8.99, 10),
+    ('Termo para Agua Caliente', 'Termo de acero para agua caliente', 15.99, 10),
+    ('Caja para Yerba y Azúcar', 'Caja doble para yerba y azúcar', 10.50, 10),
+    ('Cepillo de Limpieza para Mate', 'Cepillo pequeño para limpiar mates', 3.50, 10),
+
+    -- Más productos variados para completar el total de 60 productos
+    ('Mate con Terminaciones en Oro', 'Mate exclusivo con detalles en oro', 45.99, 1),
+    ('Mate Cerámico Esmaltado', 'Mate esmaltado en blanco y azul', 9.99, 2),
+    ('Mate Calabaza con Pie de Metal', 'Mate de calabaza con soporte de metal', 11.99, 3),
+    ('Mate Vidrio Transparente', 'Mate de vidrio sin diseño', 12.00, 4),
+    ('Mate Acero con Soporte de Cuero', 'Mate de acero y soporte de cuero', 19.99, 5),
+    ('Mate Silicona Edición Especial', 'Mate de silicona en colores exclusivos', 12.99, 6),
+    ('Bombilla Acero Color Oro', 'Bombilla dorada de acero inoxidable', 8.99, 7),
+    ('Bombilla Bronce Extra Fina', 'Bombilla de bronce de diseño fino', 7.99, 8),
+    ('Set Madera Tallada', 'Set de mate y bombilla con tallado artesanal', 29.99, 9),
+    ('Porta Yerba', 'Porta yerba de cuero', 7.50, 10);
 
 
---INSERT TABLA Venta
+-- Insertar 36 usuarios
+INSERT INTO Usuario (nombre, apellido, dni, email, domicilio, telefono, idCiudad)
+VALUES
+    ('Mateo', 'González', '12345678', 'mateo.gonzalez@mail.com', 'Calle 1', '1111111111', 1),
+    ('Lucas', 'Rodríguez', '22345678', 'lucas.rodriguez@mail.com', 'Calle 2', '2222222222', 2),
+    ('Valentina', 'López', '32345678', 'valentina.lopez@mail.com', 'Calle 3', '3333333333', 3),
+    ('Martina', 'Martínez', '42345678', 'martina.martinez@mail.com', 'Calle 4', '4444444444', 4),
+    ('Santiago', 'Gómez', '52345678', 'santiago.gomez@mail.com', 'Calle 5', '5555555555', 5),
+    ('Sofía', 'Fernández', '62345678', 'sofia.fernandez@mail.com', 'Calle 6', '6666666666', 6),
+    ('Agustín', 'Díaz', '72345678', 'agustin.diaz@mail.com', 'Calle 7', '7777777777', 7),
+    ('Emilia', 'Pérez', '82345678', 'emilia.perez@mail.com', 'Calle 8', '8888888888', 8),
+    ('Mateo', 'Romero', '92345678', 'mateo.romero@mail.com', 'Calle 9', '9999999999', 9),
+    ('Lucía', 'Sosa', '10345678', 'lucia.sosa@mail.com', 'Calle 10', '1010101010', 10),
+    ('Tomás', 'Torres', '11345678', 'tomas.torres@mail.com', 'Calle 11', '1111111112', 1),
+    ('Camila', 'Ruiz', '12345679', 'camila.ruiz@mail.com', 'Calle 12', '2222222223', 2),
+    ('Gonzalo', 'Suárez', '13345678', 'gonzalo.suarez@mail.com', 'Calle 13', '3333333334', 3),
+    ('Jazmín', 'Molina', '14345678', 'jazmin.molina@mail.com', 'Calle 14', '4444444445', 4),
+    ('Lautaro', 'Ortiz', '15345678', 'lautaro.ortiz@mail.com', 'Calle 15', '5555555556', 5),
+    ('Mía', 'Morales', '16345678', 'mia.morales@mail.com', 'Calle 16', '6666666667', 6),
+    ('Bruno', 'Silva', '17345678', 'bruno.silva@mail.com', 'Calle 17', '7777777778', 7),
+    ('Martín', 'Castro', '18345678', 'martin.castro@mail.com', 'Calle 18', '8888888889', 8),
+    ('Ana', 'Ortiz', '19345678', 'ana.ortiz@mail.com', 'Calle 19', '9999999990', 9),
+    ('Juan', 'Ramos', '20345678', 'juan.ramos@mail.com', 'Calle 20', '1010101011', 10),
+    ('Daniela', 'Medina', '21345678', 'daniela.medina@mail.com', 'Calle 21', '1111111113', 1),
+    ('Pablo', 'Flores', '22345679', 'pablo.flores@mail.com', 'Calle 22', '2222222224', 2),
+    ('Rocío', 'Moreno', '23345678', 'rocio.moreno@mail.com', 'Calle 23', '3333333335', 3),
+    ('Santiago', 'Cabrera', '24345678', 'santiago.cabrera@mail.com', 'Calle 24', '4444444446', 4),
+    ('Sol', 'Aguirre', '25345678', 'sol.aguirre@mail.com', 'Calle 25', '5555555557', 5),
+    ('Damián', 'Navarro', '26345678', 'damian.navarro@mail.com', 'Calle 26', '6666666668', 6),
+    ('Carla', 'Villalba', '27345678', 'carla.villalba@mail.com', 'Calle 27', '7777777779', 7),
+    ('Elena', 'Blanco', '28345678', 'elena.blanco@mail.com', 'Calle 28', '8888888880', 8),
+    ('Gustavo', 'Benítez', '29345678', 'gustavo.benitez@mail.com', 'Calle 29', '9999999991', 9),
+    ('Fernanda', 'Leiva', '30345678', 'fernanda.leiva@mail.com', 'Calle 30', '1010101012', 10),
+    ('Sergio', 'Escobar', '31345678', 'sergio.escobar@mail.com', 'Calle 31', '1111111114', 1),
+    ('Manuel', 'Vega', '32345678', 'manuel.vega@mail.com', 'Calle 32', '2222222225', 2),
+    ('Luis', 'López', '33345678', 'luis.lopez@mail.com', 'Calle 33', '3333333336', 3),
+    ('Alejandra', 'Rivera', '34345678', 'alejandra.rivera@mail.com', 'Calle 34', '4444444447', 4),
+    ('Florencia', 'Romero', '99345678', 'florencia.romero@mail.com', 'Calle 35', '9999999998', 9),
+    ('Germán', 'Soto', '10034567', 'german.soto@mail.com', 'Calle 36', '1010101019', 10);
 
-INSERT INTO Venta (nroFacturacion, fecha, total, idUsuario, idMedioPago) 
-VALUES (1, getdate(), 2500, 1, 1);
 
-INSERT INTO Venta (nroFacturacion, fecha, total, idUsuario, idMedioPago) 
-VALUES (2, getdate(), 2000, 2, 2);
+-- Inserción de 30 consultas
+INSERT INTO Consulta (asunto, mensaje, idUsuario) VALUES
+    ('Problema de acceso', 'No puedo acceder a mi cuenta. Me sale un error de autenticación.', 1),
+    ('Duda sobre el plan de entrenamiento', 'Quisiera saber más sobre el plan de entrenamiento que se recomienda para principiantes.', 2),
+    ('Consulta sobre el pago', 'Me gustaría saber si el pago mensual cubre todas las actividades o hay un costo adicional.', 3),
+    ('Pregunta sobre horarios', '¿Cuál es el horario disponible para clases de yoga?', 4),
+    ('Solicitud de cancelación', 'Deseo cancelar mi membresía debido a motivos personales. ¿Qué pasos debo seguir?', 5),
+    ('Consulta sobre el estado de mi pago', '¿Pueden confirmar si mi pago fue procesado correctamente? No veo el recibo en mi cuenta.', 6),
+    ('Recomendación de ejercicios', '¿Podrían recomendarme un plan de ejercicios para mejorar mi resistencia cardiovascular?', 7),
+    ('Problema con la tarjeta de pago', 'Intenté hacer un pago con mi tarjeta, pero la transacción no fue exitosa. ¿Qué puedo hacer?', 8),
+    ('Preguntar por nuevos productos', '¿Tienen nuevos equipos de entrenamiento disponibles para la venta?', 9),
+    ('Petición de clase personalizada', 'Me gustaría contratar una clase personalizada con un entrenador. ¿Cómo puedo agendarla?', 10),
+    ('Duda sobre la duración de la membresía', '¿La membresía anual incluye acceso ilimitado o hay restricciones?', 11),
+    ('Sugerencia para la aplicación', 'La aplicación móvil podría mejorar en cuanto a la velocidad y la interfaz de usuario. Espero que lo consideren.', 12),
+    ('Consulta sobre clases de natación', '¿Cuándo comenzarán las clases de natación en el gimnasio?', 13),
+    ('Solicitud de comprobante de pago', '¿Podrían enviarme el comprobante de mi pago realizado el mes pasado?', 14),
+    ('Información sobre los entrenadores', '¿Cómo puedo saber más sobre los entrenadores disponibles y sus especialidades?', 15),
+    ('Problema con el acceso a las clases online', 'No logro acceder a las clases online. Me aparece un mensaje de error cada vez que intento ingresar.', 16),
+    ('Duda sobre promociones', '¿Tienen alguna promoción vigente para nuevos miembros?', 17),
+    ('Consulta sobre el uso de suplementos', '¿El gimnasio ofrece recomendaciones sobre el uso de suplementos alimenticios?', 18),
+    ('Reclamo sobre una clase cancelada', 'Me dijeron que la clase de spinning estaba programada, pero no se llevó a cabo. ¿Podrían ofrecerme una solución?', 19),
+    ('Sugerencia de actividad grupal', 'Sería genial tener más actividades grupales, como bailes o retos de fitness en equipo.', 20),
+    ('Problema con el sistema de reservas', 'Estoy teniendo dificultades para reservar mis clases en línea, no puedo seleccionar las fechas disponibles.', 21),
+    ('Consulta sobre los precios', '¿Pueden indicarme los precios actuales para la membresía trimestral?', 22),
+    ('Requerimiento de cambio de entrenador', 'Me gustaría cambiar de entrenador para mis clases de personal training. ¿Es posible hacerlo?', 23),
+    ('Duda sobre las restricciones de la membresía', '¿Existen limitaciones en la cantidad de visitas al gimnasio durante el mes con la membresía mensual?', 24),
+    ('Preguntar por el acceso a la piscina', '¿La membresía incluye acceso a la piscina del gimnasio?', 25),
+    ('Solicitud de más clases de Pilates', 'Me encantaría ver más clases de Pilates en el horario de las tardes.', 26),
+    ('Consulta sobre el servicio de masajes', '¿El gimnasio ofrece servicios de masajes después de las clases?', 27),
+    ('Inconvenientes con el vestuario', 'Los vestuarios no están limpios. Es algo que me gustaría que mejoraran.', 28),
+    ('Recomendación para aumentar la fuerza', 'Estoy buscando ejercicios para mejorar mi fuerza en piernas, ¿me podrían ayudar con un plan específico?', 29),
+    ('Consulta sobre el seguimiento de progreso', '¿Hay alguna manera de hacer seguimiento de mi progreso físico mediante la aplicación o el gimnasio?', 30);
 
-INSERT INTO Venta (nroFacturacion, fecha, total, idUsuario, idMedioPago) 
-VALUES (3, getdate(), 3500, 3, 3);
 
---INSERT TABLA VentDetalle
+-- Carga masiva en tabla 'VENTA'
+DECLARE @i INT = 1;
+DECLARE @total INT = 1000000; -- Número de registros a insertar
+DECLARE @fecha DATE;
+DECLARE @idUsuario INT;
+DECLARE @idMedioPago INT;
+DECLARE @totalVenta FLOAT;
 
-INSERT INTO VentaDetalle (cantidad, subTotal, idProducto, nroFacturacion) 
-VALUES (1, 2500, 1, 1);
+-- Ciclo para insertar un millón de registros
+WHILE @i <= @total
+BEGIN
+    -- Generar fecha aleatoria entre 2015-01-01 y 2024-12-31
+    SET @fecha = DATEADD(DAY, (RAND() * (DATEDIFF(DAY, '2015-01-01', '2024-12-31'))), '2022-01-01');
+    
+    -- Seleccionar usuario y medio de pago aleatorios
+    SET @idUsuario = (SELECT TOP 1 idUsuario FROM Usuario ORDER BY NEWID());
+    SET @idMedioPago = (SELECT TOP 1 idMedioPago FROM MedioPago ORDER BY NEWID());
+    
+    -- Calcular un total de venta aleatorio
+    SET @totalVenta = ROUND((RAND() * (50000) + 2500), 2); -- Precio entre 2500 y 50000
+    
+    -- Insertar registro en la tabla Venta
+    INSERT INTO Venta (fecha, total, idUsuario, idMedioPago)
+    VALUES (@fecha, @totalVenta, @idUsuario, @idMedioPago);
+    
+    -- Incrementar el contador
+    SET @i = @i + 1;
+END
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+select * from venta;
 
-INSERT INTO VentaDetalle (cantidad, subTotal, idProducto, nroFacturacion) 
-VALUES (1, 1200, 2, 2);
 
-INSERT INTO VentaDetalle (cantidad, subTotal, idProducto, nroFacturacion) 
-VALUES (1, 800, 3, 3);
+-- Insercion en tabla Venta Detalle
+DECLARE @MaxVentas INT = 1000000;
+DECLARE @MaxProductos INT = (SELECT COUNT(*) FROM Producto);
+
+-- Variable para controlar la cantidad de productos por venta
+DECLARE @Cantidad INT;
+DECLARE @SubTotal FLOAT;
+DECLARE @Producto INT;
+DECLARE @Venta INT;
+
+
+-- Inserción de VentaDetalle
+DECLARE @i INT = 1;
+WHILE @i <= @MaxVentas
+BEGIN
+    -- Seleccionamos una venta específica
+    SET @Venta = @i;
+
+    -- Generamos un número aleatorio de productos para cada venta
+    SET @Cantidad = FLOOR(RAND() * 2) + 1;  -- Cantidad de productos entre 1 y 2
+    SET @Producto = (SELECT TOP 1 idProducto FROM Producto ORDER BY NEWID());  -- Producto aleatorio
+
+    -- Obtención del precio del producto
+    SET @SubTotal = (SELECT precio FROM Producto WHERE idProducto = @Producto) * @Cantidad;
+
+    -- Insertar en VentaDetalle
+    INSERT INTO VentaDetalle (idProducto, nroFacturacion, cantidad, subTotal)
+    VALUES (@Producto, @Venta, @Cantidad, @SubTotal);
+
+    SET @i = @i + 1;  -- Avanzamos al siguiente número de venta
+END
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+select * from VentaDetalle;

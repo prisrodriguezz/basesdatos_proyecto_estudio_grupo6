@@ -31,13 +31,13 @@ Por eso, necesitan desarrollar una tienda online que haga todo más simple. Esta
 
 ## **TEMA 1: MANEJOS DE PERMISOS A NIVEL DE USUARIOS DE BASE DE DATOS** 
 
-Los Roles en base de datos, son utilizados para proteger el acceso a datos y objetos, como por ejemplo esquemas o tablas. Los Roles, sirven para administrar y gestionar con mayor facilidad los permisos en la base de datos, es posible definir roles con permisos especificos y a la vez asignar estos roles a usuarios. Algunos ejemplos de roles comunes incluyen:
+Los **Roles** en base de datos, son utilizados para proteger el acceso a datos y objetos, como por ejemplo esquemas o tablas. Los Roles, sirven para administrar y gestionar con mayor facilidad los permisos en la base de datos, es posible definir roles con permisos especificos y a la vez asignar estos roles a usuarios. Algunos ejemplos de roles comunes incluyen:
 
 ⦁	Administrador: Puede realizar cualquier operación, incluida la administración de usuarios y permisos.
 
 ⦁	Usuario: Puede realizar solo operaciones de lectura o escritura.
 
- Los usuarios son las entidades a las que se les otorgan permisos, un control adecuado de permisos asegura que solo las personas autorizadas puedan realizar determinadas acciones sobre la base de datos. Algunos de estos permisos son :
+ Los usuarios son las entidades a las que se les otorgan **permisos**, un control adecuado de permisos asegura que solo las personas autorizadas puedan realizar determinadas acciones sobre la base de datos. Algunos de estos permisos son :
  
 ⦁	Lectura (SELECT): Permite ver los datos.
 
@@ -53,7 +53,7 @@ Los Roles en base de datos, son utilizados para proteger el acceso a datos y obj
 
 SQL server proporciona varios roles, que son las entidades de seguridad que agrupan otras entidades de seguridad. Existen dos tipos de roles en el nivel de base de datos: los roles fijos de base de datos que están predefinidos en la base de datos y los roles de base de datos definidos por el usuario que el usuario puede crear.
 
-Roles fijos de base de datos:
+- **ROLES FIJOS DE BASE DE DATOS:**
 
 ⦁	db_owner: Permiso total sobre la base de datos (administrador completo). Crear, modificar, eliminar objetos, administrar seguridad.
 
@@ -73,7 +73,7 @@ Roles fijos de base de datos:
 
 ⦁	db_denydatawriter:Denegar el permiso de escritura sobre todas las tablas. Bloquea operaciones INSERT, UPDATE, DELETE.
 
-Roles definidos por el Usuario. Ejemplo:
+- **ROLES DEFINIDOS POR EL USUARIO.** Ejemplo:
 
 Crear un rol de ventas: CREATE ROLE rol_ventas;
 

@@ -33,8 +33,20 @@ Por eso, necesitan desarrollar una tienda online que haga todo más simple. Esta
 Ut sed imperdiet risus. Maecenas vestibulum arcu vitae orci pretium pharetra. Suspendisse potenti. Fusce massa libero, fermentum eget elit in, tincidunt fermentum nunc. Cras imperdiet nisl elit, elementum gravida enim accumsan vel. Sed in sapien quis ante consectetur commodo id non nulla. Aenean lacinia, dolor convallis semper mattis, ante orci elementum nunc, eget feugiat risus neque in urna. Ut ut quam nec risus mollis convallis ornare ac odio. Phasellus efficitur posuere nibh, eget tempor augue pellentesque ac. Ut enim sem, imperdiet non est ut, blandit posuere dui. Curabitur at purus orci. Interdum et malesuada fames ac ante ipsum primis in faucibus.
 
 
-**TEMA 2 " ----- "** 
-Ut sed imperdiet risus. Maecenas vestibulum arcu vitae orci pretium pharetra. Suspendisse potenti. Fusce massa libero, fermentum eget elit in, tincidunt fermentum nunc. Cras imperdiet nisl elit, elementum gravida enim accumsan vel. Sed in sapien quis ante consectetur commodo id non nulla. Aenean lacinia, dolor convallis semper mattis, ante orci elementum nunc, eget feugiat risus neque in urna. Ut ut quam nec risus mollis convallis ornare ac odio. Phasellus efficitur posuere nibh, eget tempor augue pellentesque ac. Ut enim sem, imperdiet non est ut, blandit posuere dui. Curabitur at purus orci. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+**TEMA 2: PROCEDIMIENTOS Y FUNCIONES ALMACENADAS** 
+En SQL Server, los **procedimientos almacenados** son conjuntos de instrucciones SQL encapsulados que permiten ejecutar operaciones complejas en la base de datos de manera estructurada y eficiente. Pueden recibir parámetros, devolver valores, y manejar errores. Esta encapsulación es útil para reducir el tráfico de red y controlar los accesos a la base de datos, porque solo se envía una sola instrucción para que se ejecuten varias operaciones, en lugar de tener que enviar cada línea de código, lo que reduce el tráfico entre el cliente y el servidor y mejora la velocidad.
+
+Los procedimientos almacenados aportan varios beneficios: permiten reutilizar y simplificar el código al encapsular tareas comunes de la base de datos, facilitan el mantenimiento (las aplicaciones que los llaman no necesitan conocer los detalles internos) y suelen ser más rápidos gracias a los planes de ejecución precompilados que SQL Server reutiliza para mejorar el rendimiento.
+
+Hay diferentes tipos de procedimientos en SQL Server, como los definidos por el usuario (para tareas específicas), los temporales (usados solo durante una sesión específica), y los del sistema (para mantenimiento y operaciones internas de SQL Server). También existen procedimientos extendidos, que permiten llamar a bibliotecas externas.
+
+Por otro lado, las **funciones almacenadas** en SQL Server son rutinas que permiten encapsular lógicas de cálculo y operaciones complejas dentro de una función que puede ser reutilizada en múltiples consultas y procedimientos. Existen principalmente tres tipos en SQL Server: escalares, con valores de tabla, y funciones del sistema.
+
+- Escalares: Devuelven un único valor escalar (numérico, cadena, etc.) que puede usarse en cualquier expresión o cláusula SELECT.
+- Con valores de tabla: Estas funciones devuelven un conjunto de resultados de tipo tabla, lo cual permite tratar la salida como una tabla en consultas JOIN y otras operaciones.
+- Funciones del sistema: Estas son funciones integradas en SQL Server que no pueden modificarse, como GETDATE() o CURRENT_TIMESTAMP, y sirven para obtener valores de uso frecuente del sistema.
+
+A diferencia de los procedimientos almacenados, las funciones no pueden modificar tablas externas ni realizar cambios permanentes en el estado de la base de datos. Si se produce un error dentro de una función, la ejecución se detiene y se cancela la función completa. 
 
 
 ## TEMA 3 " : OPTIMIZACIÓN DE CONSULTAS A TRAVES DE ÍNDICES 

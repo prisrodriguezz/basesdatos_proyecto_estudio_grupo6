@@ -37,12 +37,15 @@ Ut sed imperdiet risus. Maecenas vestibulum arcu vitae orci pretium pharetra. Su
 Ut sed imperdiet risus. Maecenas vestibulum arcu vitae orci pretium pharetra. Suspendisse potenti. Fusce massa libero, fermentum eget elit in, tincidunt fermentum nunc. Cras imperdiet nisl elit, elementum gravida enim accumsan vel. Sed in sapien quis ante consectetur commodo id non nulla. Aenean lacinia, dolor convallis semper mattis, ante orci elementum nunc, eget feugiat risus neque in urna. Ut ut quam nec risus mollis convallis ornare ac odio. Phasellus efficitur posuere nibh, eget tempor augue pellentesque ac. Ut enim sem, imperdiet non est ut, blandit posuere dui. Curabitur at purus orci. Interdum et malesuada fames ac ante ipsum primis in faucibus.
 
 
-**TEMA 3 " : Optimización de consultas a través de índices "** 
-MANEJOS DE INDICES EN SQL:
+**TEMA 3 " : OPTIMIZACIÓN DE CONSULTAS A TRAVES DE ÍNDICES "** 
+
+**MANEJOS DE INDICES EN SQL:**
+
 Los índices son estructuras que mejoran el rendimiento de las consultas que se realicen, ya que acceden de manera rápida a los datos.
 Los dos tipos en los cuales se dividen son agrupados (“Clusters”)y no agrupados.
 
 **INDICES AGRUPADOS:**
+
 Cuando hablamos de índices agrupados, el típico ejemplo es el de un diccionario, donde als palabras a a buscar están agrupadas y ordenadas por orden alfabético, de esta manera al buscar una palabra determinada (Ej. Casa) se sabe que debe dirigirse a la sección donde comienzan las palabras con “C”.
 De igual manera funcionan los clusters, agrupan y ordenan por la columna que se haya definido al momento de la creación del índice, que puede ser la que queramos. Pero lo ideal seria usar aquellas que:
 •	Son únicas o contienen muchos valores distintos (PK, DNI, nombres, correos, etc)
@@ -54,6 +57,7 @@ Como la clave primaria suele ser una columna consultada o referenciada con frecu
 Otra cosa importante sobre los índices agrupados es que ellos modifican físicamente el orden de la base de datos, es por ello que en lso cases de DELETE, UPDATE,INSERT esto es mas costoso en rendimiento, mas si se trata de modificaciones en registros intermedios ya que eso significaría un reordenamiento de los demás registros.
 
 **INDICES NO AGRUPADOS:**
+
 Así como hablamos de que los agrupados se asemejan a los diccionarios o guías telefónicas, los no agrupados son parecidos al índice de un libro, ya que no modifican físicamente la estructura de la base de datos, solamente indican en que lugar se encuentran a través de punteros. Es por ello que en los casos de DELETE, UPDATE,INSERT, se realizan más rápidamente al no haber modificaciones físicas.
 Antes de crear índices no agrupados, se debe conocer cómo se tiene acceso a los datos. Hay que considerar la posibilidad de utilizar un índice no clúster para consultas que cuentan con los siguientes atributos:
 •	Usan cláusulas JOIN o GROUP BY.

@@ -47,24 +47,36 @@ Los dos tipos en los cuales se dividen son agrupados (“Clusters”)y no agrupa
 **INDICES AGRUPADOS:**
 
 Cuando hablamos de índices agrupados, el típico ejemplo es el de un diccionario, donde als palabras a a buscar están agrupadas y ordenadas por orden alfabético, de esta manera al buscar una palabra determinada (Ej. Casa) se sabe que debe dirigirse a la sección donde comienzan las palabras con “C”.
+
 De igual manera funcionan los clusters, agrupan y ordenan por la columna que se haya definido al momento de la creación del índice, que puede ser la que queramos. Pero lo ideal seria usar aquellas que:
-•	Son únicas o contienen muchos valores distintos (PK, DNI, nombres, correos, etc)
-•	Se tiene acceso a ellas de forma secuencial (fechas)
-•	Definido como IDENTITY.
-•	Se utilizan con frecuencia para ordenar los datos recuperados de una tabla
+
+•*	Son únicas o contienen muchos valores distintos (PK, DNI, nombres, correos, etc)
+
+•*	Se tiene acceso a ellas de forma secuencial (fechas)
+
+•*	Definido como IDENTITY.
+
+•*	Se utilizan con frecuencia para ordenar los datos recuperados de una tabla
+
 Cabe aclarar, que SQL Server al momento de crear una tabla, este ya crea un índice agrupado por PK si no se definió otro índice. Este agrupamiento subsiste hasta que sea creado por el administrador de la Base de Datos.
+
 Como la clave primaria suele ser una columna consultada o referenciada con frecuencia, SQL Server aprovecha la estructura de índice agrupado en esa columna si no se ha asignado ya.
+
 Otra cosa importante sobre los índices agrupados es que ellos modifican físicamente el orden de la base de datos, es por ello que en lso cases de DELETE, UPDATE,INSERT esto es mas costoso en rendimiento, mas si se trata de modificaciones en registros intermedios ya que eso significaría un reordenamiento de los demás registros.
 
 **INDICES NO AGRUPADOS:**
 
 Así como hablamos de que los agrupados se asemejan a los diccionarios o guías telefónicas, los no agrupados son parecidos al índice de un libro, ya que no modifican físicamente la estructura de la base de datos, solamente indican en que lugar se encuentran a través de punteros. Es por ello que en los casos de DELETE, UPDATE,INSERT, se realizan más rápidamente al no haber modificaciones físicas.
+
 Antes de crear índices no agrupados, se debe conocer cómo se tiene acceso a los datos. Hay que considerar la posibilidad de utilizar un índice no clúster para consultas que cuentan con los siguientes atributos:
-•	Usan cláusulas JOIN o GROUP BY.
+
+•*	Usan cláusulas JOIN o GROUP BY.
 Crean varios índices no clúster para las columnas que intervienen en operaciones de combinación y de agrupación, y un índice clúster para las columnas de clave externa.
-•	No devuelven conjuntos de resultados de gran tamaño.
+
+•*	No devuelven conjuntos de resultados de gran tamaño.
 Cree índices filtrados para atender consultas que devuelven un subconjunto bien definido de filas en una tabla grande.
-•	Contienen columnas que suelen incluirse en las condiciones de búsqueda de una consulta:
+
+•*	Contienen columnas que suelen incluirse en las condiciones de búsqueda de una consulta:
  Como una cláusula WHERE, que devuelven coincidencias exactas.
 
 

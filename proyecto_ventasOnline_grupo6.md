@@ -39,7 +39,7 @@ Ut sed imperdiet risus. Maecenas vestibulum arcu vitae orci pretium pharetra. Su
 
 **TEMA 3 " : OPTIMIZACIÓN DE CONSULTAS A TRAVES DE ÍNDICES "** 
 
-**MANEJOS DE INDICES EN SQL:**
+## MANEJOS DE INDICES EN SQL:
 
 Los índices son estructuras que mejoran el rendimiento de las consultas que se realicen, ya que acceden de manera rápida a los datos.
 Los dos tipos en los cuales se dividen son agrupados (“Clusters”)y no agrupados.
@@ -50,13 +50,13 @@ Cuando hablamos de índices agrupados, el típico ejemplo es el de un diccionari
 
 De igual manera funcionan los clusters, agrupan y ordenan por la columna que se haya definido al momento de la creación del índice, que puede ser la que queramos. Pero lo ideal seria usar aquellas que:
 
-•*	Son únicas o contienen muchos valores distintos (PK, DNI, nombres, correos, etc)
+•	Son únicas o contienen muchos valores distintos (**PK, DNI, nombres, correos, etc**)
 
-•*	Se tiene acceso a ellas de forma secuencial (fechas)
+•	Se tiene acceso a ellas de forma secuencial (**fechas**)
 
-•*	Definido como IDENTITY.
+•	Definido como **IDENTITY**.
 
-•*	Se utilizan con frecuencia para ordenar los datos recuperados de una tabla
+•	Se utilizan con frecuencia para ordenar los datos recuperados de una tabla
 
 Cabe aclarar, que SQL Server al momento de crear una tabla, este ya crea un índice agrupado por PK si no se definió otro índice. Este agrupamiento subsiste hasta que sea creado por el administrador de la Base de Datos.
 
@@ -70,14 +70,14 @@ Así como hablamos de que los agrupados se asemejan a los diccionarios o guías 
 
 Antes de crear índices no agrupados, se debe conocer cómo se tiene acceso a los datos. Hay que considerar la posibilidad de utilizar un índice no clúster para consultas que cuentan con los siguientes atributos:
 
-•*	Usan cláusulas JOIN o GROUP BY.
+•*	Usan cláusulas **JOIN o GROUP BY**.
 Crean varios índices no clúster para las columnas que intervienen en operaciones de combinación y de agrupación, y un índice clúster para las columnas de clave externa.
 
-•*	No devuelven conjuntos de resultados de gran tamaño.
+•*	No devuelven conjuntos de resultados de **gran tamaño**.
 Cree índices filtrados para atender consultas que devuelven un subconjunto bien definido de filas en una tabla grande.
 
 •*	Contienen columnas que suelen incluirse en las condiciones de búsqueda de una consulta:
- Como una cláusula WHERE, que devuelven coincidencias exactas.
+ Como una cláusula ** WHERE**, que devuelven coincidencias exactas.
 
 
 

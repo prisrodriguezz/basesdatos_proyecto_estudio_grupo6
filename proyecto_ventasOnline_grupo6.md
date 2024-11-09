@@ -29,8 +29,33 @@ Por eso, necesitan desarrollar una tienda online que haga todo más simple. Esta
 
 ## CAPITULO II: MARCO CONCEPTUAL O REFERENCIAL
 
-**TEMA 1 " ---- "** 
-Ut sed imperdiet risus. Maecenas vestibulum arcu vitae orci pretium pharetra. Suspendisse potenti. Fusce massa libero, fermentum eget elit in, tincidunt fermentum nunc. Cras imperdiet nisl elit, elementum gravida enim accumsan vel. Sed in sapien quis ante consectetur commodo id non nulla. Aenean lacinia, dolor convallis semper mattis, ante orci elementum nunc, eget feugiat risus neque in urna. Ut ut quam nec risus mollis convallis ornare ac odio. Phasellus efficitur posuere nibh, eget tempor augue pellentesque ac. Ut enim sem, imperdiet non est ut, blandit posuere dui. Curabitur at purus orci. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+## **TEMA 1: MANEJOS DE PERMISOS A NIVEL DE USUARIOS DE BASE DE DATOS** 
+
+Los Roles en base de datos, son utilizados para proteger el acceso a datos y objetos, como por ejemplo esquemas o tablas. Los Roles, sirven para administrar y gestionar con mayor facilidad los permisos en la base de datos, es posible definir roles con permisos especificos y a la vez asignar estos roles a usuarios. Algunos ejemplos de roles comunes incluyen:
+⦁	Administrador: Puede realizar cualquier operación, incluida la administración de usuarios y permisos.
+⦁	Usuario: Puede realizar solo operaciones de lectura o escritura.
+ Los usuarios son las entidades a las que se les otorgan permisos, un control adecuado de permisos asegura que solo las personas autorizadas puedan realizar determinadas acciones sobre la base de datos. Algunos de estos permisos son :
+⦁	Lectura (SELECT): Permite ver los datos.
+⦁	Escritura (INSERT): Permite agregar nuevos registros.
+⦁	Modificación (UPDATE): Permite cambiar registros existentes.
+⦁	Eliminación (DELETE): Permite borrar registros.
+⦁	Ejecutar (EXECUTE): Permite ejecutar procedimientos almacenados o funciones.
+⦁	Administración (GRANT, REVOKE, ALTER, DROP): Permite modificar la estructura de la base de datos o gestionar otros permisos.
+SQL server proporciona varios roles, que son las entidades de seguridad que agrupan otras entidades de seguridad. Existen dos tipos de roles en el nivel de base de datos: los roles fijos de base de datos que están predefinidos en la base de datos y los roles de base de datos definidos por el usuario que el usuario puede crear.
+Roles fijos de base de datos:
+⦁	db_owner: Permiso total sobre la base de datos (administrador completo). Crear, modificar, eliminar objetos, administrar seguridad.
+⦁	db_securityadmin:Gestión de la seguridad de la base de datos (roles y permisos). Crear/Modificar roles, asignar permisos.
+⦁	db_accessadmin:Gestión de acceso de usuarios a la base de datos. Agregar/Eliminar usuarios.
+⦁	db_backupoperator:Permiso para realizar copias de seguridad y restaurar bases de datos. Ejecutar backups y restauraciones.
+⦁	db_datareader:Permiso solo de lectura sobre todas las tablas.	Ejecutar consultas SELECT en todas las tablas.
+⦁	db_datawriter: Permiso de escritura sobre todas las tablas.Ejecutar INSERT, UPDATE, DELETE en todas las tablas.
+⦁	db_ddladmin:Permiso para modificar la estructura de la base de datos (tablas, vistas, etc.). Crear/Modificar/Eliminar objetos (tablas, vistas, etc.).
+⦁	db_denydatareader:Denegar el permiso de lectura sobre todas las tablas. Bloquea consultas SELECT en cualquier tabla.
+⦁	db_denydatawriter:Denegar el permiso de escritura sobre todas las tablas. Bloquea operaciones INSERT, UPDATE, DELETE.
+Roles definidos por el Usuario. Ejemplo:
+Crear un rol de ventas: CREATE ROLE rol_ventas;
+Asignar permisos a ese rol: GRANT SELECT, INSERT, UPDATE ON ventas TO rol_ventas;
+Asignar rol a un usuario: EXEC sp_addrolemember 'rol_ventas', 'usuario_juan';
 
 
 

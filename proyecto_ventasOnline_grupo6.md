@@ -228,8 +228,16 @@ Cree índices filtrados para atender consultas que devuelven un subconjunto bien
 
 
 
-**TEMA 4 " ---- "** 
-Ut sed imperdiet risus. Maecenas vestibulum arcu vitae orci pretium pharetra. Suspendisse potenti. Fusce massa libero, fermentum eget elit in, tincidunt fermentum nunc. Cras imperdiet nisl elit, elementum gravida enim accumsan vel. Sed in sapien quis ante consectetur commodo id non nulla. Aenean lacinia, dolor convallis semper mattis, ante orci elementum nunc, eget feugiat risus neque in urna. Ut ut quam nec risus mollis convallis ornare ac odio. Phasellus efficitur posuere nibh, eget tempor augue pellentesque ac. Ut enim sem, imperdiet non est ut, blandit posuere dui. Curabitur at purus orci. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+**TEMA 4 " MANEJO DE TIPO DE DATO JSON "** 
+
+** JSON: Java Script Object Notation **
+
+Se usa principalmente para enviar y recibir datos puede ser para intercambios de datos entre un servidor y una página web. En bases de datos relacionales permite almacenar y manipular datos semi-estructurados en un formato de texto flexible y compatible con aplicaciones modernas. El soporte para JSON se ha convertido en una característica valiosa para trabajar con datos dinámicos o menos rígidos, especialmente en aplicaciones web y móviles que utilizan JSON 
+
+ • JSON se vale del concepto “clave-valor”, donde para cada clave existente existe un valor asociado. 
+
+ • Un conjunto de claves y valores conforman un objeto, que en JSON se representa mediante la apertura y cierre de llaves { }. 
+ 
 
 ## CAPÍTULO III: METODOLOGÍA SEGUIDA 
 

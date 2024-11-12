@@ -92,54 +92,54 @@ Aportan varios beneficios: permiten reutilizar y simplificar el código al encap
 
 Hay diferentes tipos de procedimientos en SQL Server:
 
-- **Los definidos por el usuario:** son creados por el usuario para realizar tareas especificas. Pueden recibir o no parametros.
+- **Los definidos por el usuario:** son creados por el usuario para realizar tareas especificas. Pueden recibir o no parametros. <br>
 En el siguiente ejemplo, el procedimiento 'ObtenerClientesActivos' devuelve una lista de clientes activos.<br>
 CREATE PROCEDURE ObtenerClientesActivos<br>
 AS<br>
 BEGIN<br>
-SELECT ClienteID, Nombre, Ciudad FROM Clientes WHERE Activo = 1;<br>
+	SELECT ClienteID, Nombre, Ciudad FROM Clientes WHERE Activo = 1;<br>
 END;<br>
 
-- **Los temporales:** se almacenan en la base de datos **tempdb**. Existen procedimientos temporales locales (solo visibles en la sesión actual, se elimina cuando se cierra la conexión) y globales (visibles en todas las sesiones, se elimina cuando la última conexión que lo usa se cierra).
-El siguiente ejemplo devuelve todas las columnas de los primeros 10 registros de la tabla 'Productos'.
->>  CREATE PROCEDURE **#**ProcedimientoTemporalLocal
-    AS
-    BEGIN
-        SELECT TOP 10 * FROM Productos;
-    END;
-*Una vez que la conexión que creó el procedimiento se cierra, este procedimiento se elimina automáticamente. Este tipo de procedimiento es útil para operaciones que se necesitan realizar solo de forma transitoria en la sesión actual.*
+- **Los temporales:** se almacenan en la base de datos **tempdb**. Existen procedimientos temporales locales (solo visibles en la sesión actual, se elimina cuando se cierra la conexión) y globales (visibles en todas las sesiones, se elimina cuando la última conexión que lo usa se cierra). <br>
+El siguiente ejemplo devuelve todas las columnas de los primeros 10 registros de la tabla 'Productos'. <br>
+CREATE PROCEDURE **#**ProcedimientoTemporalLocal <br>
+AS <br>
+BEGIN <br>
+	SELECT TOP 10 * FROM Productos; <br>
+END; <br>
+*Una vez que la conexión que creó el procedimiento se cierra, este procedimiento se elimina automáticamente. Este tipo de procedimiento es útil para operaciones que se necesitan realizar solo de forma transitoria en la sesión actual.*<br>
 
-El siguiente ejemplo devuelve todas las columnas de la tabla 'Ordenes' donde la columna 'FechaOrden' cumple con la restriccion de fecha.
->>  CREATE PROCEDURE **##**ProcedimientoTemporalGlobal
-   AS
-    BEGIN
-        SELECT * FROM Ordenes WHERE FechaOrden > GETDATE() - 30;
-    END;
-*Se elimina automáticamente cuando la última sesión que lo esté usando se cierra. Este tipo de procedimiento es útil cuando se necesita compartir temporalmente una consulta específica entre diferentes sesiones.*
+El siguiente ejemplo devuelve todas las columnas de la tabla 'Ordenes' donde la columna 'FechaOrden' cumple con la restriccion de fecha.<br>
+CREATE PROCEDURE **##**ProcedimientoTemporalGlobal<br>
+AS<br>
+BEGIN<br>
+	SELECT * FROM Ordenes WHERE FechaOrden > GETDATE() - 30;<br>
+END;<br>
+*Se elimina automáticamente cuando la última sesión que lo esté usando se cierra. Este tipo de procedimiento es útil cuando se necesita compartir temporalmente una consulta específica entre diferentes sesiones.*<br>
 
-- **Los del sistema:** SQL Server incluye procedimientos del sistema (que inician con sp_) para ayudar en el mantenimiento y las operaciones internas. Estos están almacenados en la base de datos master.
-El siguiente ejemplo muestra la estructura de la tabla 'Clientes'.
->> EXEC **sp_**help 'Clientes';
+- **Los del sistema:** SQL Server incluye procedimientos del sistema (que inician con sp_) para ayudar en el mantenimiento y las operaciones internas. Estos están almacenados en la base de datos master.<br>
+El siguiente ejemplo muestra la estructura de la tabla 'Clientes'.<br>
+-> EXEC **sp_**help 'Clientes';<br>
  
-- **Procedimientos extendidos:** los procedimientos extendidos (xp_) permiten a SQL Server ejecutar funciones externas en el sistema operativo, como interactuar con archivos y sistemas. Estos se utilizan con precaución, ya que acceden a recursos externos.
-El sguiente ejemplo ejecuta el comando dir para mostrar el contenido de la carpeta 'C:\Archivos'.
->> EXEC **xp_**cmdshell 'dir C:\Archivos';
-*'xp_cmdshell' permite ejecutar comandos del sistema operativo desde SQL Server (es necesario habilitar este procedimiento primero).*
+- **Procedimientos extendidos:** los procedimientos extendidos (xp_) permiten a SQL Server ejecutar funciones externas en el sistema operativo, como interactuar con archivos y sistemas. Estos se utilizan con precaución, ya que acceden a recursos externos.<br>
+El sguiente ejemplo ejecuta el comando dir para mostrar el contenido de la carpeta 'C:\Archivos'.<br>
+-> EXEC **xp_**cmdshell 'dir C:\Archivos';<br>
+*'xp_cmdshell' permite ejecutar comandos del sistema operativo desde SQL Server (es necesario habilitar este procedimiento primero).* <br>
 
-En SQL Server, se pueden manejar errores dentro de un procedimiento almacenado utilizando las instrucciones **TRY...CATCH**. Esto permite capturar y gestionar errores que ocurran durante la ejecución de las instrucciones dentro del bloque TRY.
-Ejemplo de uso:
->>  CREATE PROCEDURE NombreProcedimiento
-    AS
-    BEGIN
-        BEGIN TRY
-            -- Código que puede causar error
-            DELETE FROM Clientes WHERE ClienteID = 100;
-        END TRY
-        BEGIN CATCH
-            -- Si ocurre un error en el bloque TRY, se ejecutan las instrucciones del bloque CATCH
-            PRINT 'Error: ' + ERROR_MESSAGE();
-        END CATCH;
-    END;
+En SQL Server, se pueden manejar errores dentro de un procedimiento almacenado utilizando las instrucciones **TRY...CATCH**. Esto permite capturar y gestionar errores que ocurran durante la ejecución de las instrucciones dentro del bloque TRY. <br>
+Ejemplo de uso: <br>
+CREATE PROCEDURE NombreProcedimiento <br>
+AS<br>
+BEGIN<br>
+	BEGIN TRY<br>
+            -- Código que puede causar error<br>
+            DELETE FROM Clientes WHERE ClienteID = 100;<br>
+        END TRY<br>
+        BEGIN CATCH<br>
+            -- Si ocurre un error en el bloque TRY, se ejecutan las instrucciones del bloque CATCH<br>
+            PRINT 'Error: ' + ERROR_MESSAGE();<br>
+        END CATCH;<br>
+END;<br>
 
 
 - **FUNCIONES ALMACENADAS**

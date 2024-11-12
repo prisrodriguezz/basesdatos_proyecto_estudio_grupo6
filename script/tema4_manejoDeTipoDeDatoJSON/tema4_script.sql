@@ -135,19 +135,3 @@ WITH (
 Con OPENJSON y CROSS APPLY, SQL Server procesa todo el JSON en una sola operación,
 lo que es más eficiente y optimizado en comparación con hacer múltiples llamadas a JSON_VALUE.
 */
-
-------------------------
---	CONCLUSIONES
-------------------------
-
-/*
-Flexibilidad: El manejo de JSON en SQL Server permite almacenar datos no estructurados junto
-con datos estructurados, lo que es ideal para información dinámica que cambia con frecuencia.
-
-Limitaciones de Rendimiento: El acceso a datos JSON es más lento que el acceso a columnas tradicionales,
-por lo que su uso debe ser planeado cuidadosamente, especialmente en sistemas de alta concurrencia o 
-con grandes volúmenes de datos.
-
-Optimización: Las columnas calculadas e índices pueden mejorar el rendimiento al trabajar 
-con JSON en consultas comunes.
-*/

@@ -228,7 +228,7 @@ Cree índices filtrados para atender consultas que devuelven un subconjunto bien
 
 
 
-**TEMA 4 " MANEJO DE TIPO DE DATO JSON "** 
+## **TEMA 4 " MANEJO DE TIPO DE DATO JSON "** 
 
 ** JSON: Java Script Object Notation **
 

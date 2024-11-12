@@ -241,9 +241,13 @@ Se usa principalmente para enviar y recibir datos puede ser para intercambios de
 Almacenamiento de Datos JSON: En SQL Server, JSON se almacena generalmente en columnas de tipo NVARCHAR, ya que JSON es esencialmente texto estructurado. Esto permite almacenar JSON como una cadena dentro de la tabla, facilitando el uso de datos semi-estructurados junto con datos tabulares tradicionales. 
 
 Consultas de Datos JSON:
+
 	• SQL Server ofrece funciones como JSON_VALUE, JSON_QUERY, y OPENJSON, que permiten leer y extraer valores específicos o subconjuntos del JSON. 
+ 
 	• JSON_VALUE: Extrae un valor escalar (como una cadena o número) de un campo JSON. 
+ 
 	• JSON_QUERY: Devuelve una subestructura JSON, útil para extraer objetos JSON o arrays completos. 
+ 
 	• OPENJSON: Convierte JSON en formato tabular, permitiendo acceder a cada par clave-valor y trabajar con él como si fuera una tabla. 
 
  Para optimizar consultas frecuentes, es posible crear columnas calculadas basadas en valores JSON (por ejemplo, extraer un ID o una fecha de un objeto JSON en una columna calculada). Estas columnas calculadas pueden ser indexadas para mejorar el rendimiento. 

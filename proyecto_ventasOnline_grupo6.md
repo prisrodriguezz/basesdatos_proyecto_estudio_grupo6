@@ -253,9 +253,11 @@ Consultas de Datos JSON:
  Para optimizar consultas frecuentes, es posible crear columnas calculadas basadas en valores JSON (por ejemplo, extraer un ID o una fecha de un objeto JSON en una columna calculada). Estas columnas calculadas pueden ser indexadas para mejorar el rendimiento. 
 
 Operaciones CRUD: 
-	• Insertar: Los datos JSON se pueden insertar como texto en columnas NVARCHAR. 
-	• Actualizar y Eliminar: SQL Server permite actualizar datos JSON usando funciones para modificar valores específicos sin reescribir el JSON completo. 
-	• Consultas: Las funciones de JSON y columnas calculadas facilitan la consulta directa de propiedades JSON sin necesidad de extraer todo el objeto. 
+• Insertar: Los datos JSON se pueden insertar como texto en columnas NVARCHAR. 
+
+• Actualizar y Eliminar: SQL Server permite actualizar datos JSON usando funciones para modificar valores específicos sin reescribir el JSON completo.
+
+• Consultas: Las funciones de JSON y columnas calculadas facilitan la consulta directa de propiedades JSON sin necesidad de extraer todo el objeto. 
 
 ## CAPÍTULO III: METODOLOGÍA SEGUIDA 
 

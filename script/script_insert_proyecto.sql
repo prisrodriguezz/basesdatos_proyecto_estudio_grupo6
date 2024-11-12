@@ -134,45 +134,50 @@ VALUES
     ('Porta Yerba', 'Porta yerba de cuero', 7.50, 10);
 
 
--- Insertar 36 usuarios
-INSERT INTO Usuario (nombre, apellido, dni, email, domicilio, telefono, idCiudad)
-VALUES
-    ('Mateo', 'González', '12345678', 'mateo.gonzalez@mail.com', 'Calle 1', '1111111111', 1),
-    ('Lucas', 'Rodríguez', '22345678', 'lucas.rodriguez@mail.com', 'Calle 2', '2222222222', 2),
-    ('Valentina', 'López', '32345678', 'valentina.lopez@mail.com', 'Calle 3', '3333333333', 3),
-    ('Martina', 'Martínez', '42345678', 'martina.martinez@mail.com', 'Calle 4', '4444444444', 4),
-    ('Santiago', 'Gómez', '52345678', 'santiago.gomez@mail.com', 'Calle 5', '5555555555', 5),
-    ('Sofía', 'Fernández', '62345678', 'sofia.fernandez@mail.com', 'Calle 6', '6666666666', 6),
-    ('Agustín', 'Díaz', '72345678', 'agustin.diaz@mail.com', 'Calle 7', '7777777777', 7),
-    ('Emilia', 'Pérez', '82345678', 'emilia.perez@mail.com', 'Calle 8', '8888888888', 8),
-    ('Mateo', 'Romero', '92345678', 'mateo.romero@mail.com', 'Calle 9', '9999999999', 9),
-    ('Lucía', 'Sosa', '10345678', 'lucia.sosa@mail.com', 'Calle 10', '1010101010', 10),
-    ('Tomás', 'Torres', '11345678', 'tomas.torres@mail.com', 'Calle 11', '1111111112', 1),
-    ('Camila', 'Ruiz', '12345679', 'camila.ruiz@mail.com', 'Calle 12', '2222222223', 2),
-    ('Gonzalo', 'Suárez', '13345678', 'gonzalo.suarez@mail.com', 'Calle 13', '3333333334', 3),
-    ('Jazmín', 'Molina', '14345678', 'jazmin.molina@mail.com', 'Calle 14', '4444444445', 4),
-    ('Lautaro', 'Ortiz', '15345678', 'lautaro.ortiz@mail.com', 'Calle 15', '5555555556', 5),
-    ('Mía', 'Morales', '16345678', 'mia.morales@mail.com', 'Calle 16', '6666666667', 6),
-    ('Bruno', 'Silva', '17345678', 'bruno.silva@mail.com', 'Calle 17', '7777777778', 7),
-    ('Martín', 'Castro', '18345678', 'martin.castro@mail.com', 'Calle 18', '8888888889', 8),
-    ('Ana', 'Ortiz', '19345678', 'ana.ortiz@mail.com', 'Calle 19', '9999999990', 9),
-    ('Juan', 'Ramos', '20345678', 'juan.ramos@mail.com', 'Calle 20', '1010101011', 10),
-    ('Daniela', 'Medina', '21345678', 'daniela.medina@mail.com', 'Calle 21', '1111111113', 1),
-    ('Pablo', 'Flores', '22345679', 'pablo.flores@mail.com', 'Calle 22', '2222222224', 2),
-    ('Rocío', 'Moreno', '23345678', 'rocio.moreno@mail.com', 'Calle 23', '3333333335', 3),
-    ('Santiago', 'Cabrera', '24345678', 'santiago.cabrera@mail.com', 'Calle 24', '4444444446', 4),
-    ('Sol', 'Aguirre', '25345678', 'sol.aguirre@mail.com', 'Calle 25', '5555555557', 5),
-    ('Damián', 'Navarro', '26345678', 'damian.navarro@mail.com', 'Calle 26', '6666666668', 6),
-    ('Carla', 'Villalba', '27345678', 'carla.villalba@mail.com', 'Calle 27', '7777777779', 7),
-    ('Elena', 'Blanco', '28345678', 'elena.blanco@mail.com', 'Calle 28', '8888888880', 8),
-    ('Gustavo', 'Benítez', '29345678', 'gustavo.benitez@mail.com', 'Calle 29', '9999999991', 9),
-    ('Fernanda', 'Leiva', '30345678', 'fernanda.leiva@mail.com', 'Calle 30', '1010101012', 10),
-    ('Sergio', 'Escobar', '31345678', 'sergio.escobar@mail.com', 'Calle 31', '1111111114', 1),
-    ('Manuel', 'Vega', '32345678', 'manuel.vega@mail.com', 'Calle 32', '2222222225', 2),
-    ('Luis', 'López', '33345678', 'luis.lopez@mail.com', 'Calle 33', '3333333336', 3),
-    ('Alejandra', 'Rivera', '34345678', 'alejandra.rivera@mail.com', 'Calle 34', '4444444447', 4),
-    ('Florencia', 'Romero', '99345678', 'florencia.romero@mail.com', 'Calle 35', '9999999998', 9),
-    ('Germán', 'Soto', '10034567', 'german.soto@mail.com', 'Calle 36', '1010101019', 10);
+-- Carga masiva en tabla 'USUARIO'
+DECLARE @i INT = 1;
+DECLARE @total INT = 1000000; -- Número de registros a insertar
+DECLARE @fechaNacimiento DATE;
+DECLARE @nombre NVARCHAR(50);
+DECLARE @apellido NVARCHAR(50);
+DECLARE @dni NVARCHAR(15);
+DECLARE @email NVARCHAR(100);
+DECLARE @domicilio NVARCHAR(100);
+DECLARE @telefono NVARCHAR(15);
+DECLARE @idCiudad INT;
+
+WHILE @i <= @total
+BEGIN
+    SET @nombre = (SELECT TOP 1 nombre FROM (VALUES ('Mateo'), ('Lucas'), ('Valentina'), ('Martina'), ('Santiago'), ('Sofía'), ('Agustín'), ('Emilia'), ('Mateo'), ('Lucía')) AS Names(nombre) ORDER BY NEWID());
+    SET @apellido = (SELECT TOP 1 apellido FROM (VALUES ('González'), ('Rodríguez'), ('López'), ('Martínez'), ('Gómez'), ('Fernández'), ('Díaz'), ('Pérez'), ('Romero'), ('Sosa')) AS Surnames(apellido) ORDER BY NEWID());
+
+    -- Generar DNI aleatorio asegurando la longitud adecuada
+    SET @dni = RIGHT('00000000' + CAST(CAST(10000000 + RAND() * 10000000 AS BIGINT) AS NVARCHAR(15)), 8); -- Limita a 8 caracteres
+
+    -- Generar email aleatorio
+    SET @email = LOWER(@nombre + '.' + @apellido + CAST(CAST(RAND() * 100 AS INT) AS NVARCHAR(3)) + '@mail.com');
+
+    -- Generar domicilio aleatorio
+    SET @domicilio = 'Calle ' + CAST(FLOOR(RAND() * 1000) AS NVARCHAR(3));
+
+    -- Generar teléfono aleatorio
+    SET @telefono = '11' + RIGHT('00000000' + CAST(CAST(FLOOR(RAND() * 100000000) AS INT) AS NVARCHAR(8)), 8);
+
+    -- Seleccionar idCiudad aleatorio
+    SET @idCiudad = (SELECT TOP 1 idCiudad FROM Ciudad ORDER BY NEWID());
+
+    -- Generar fecha de nacimiento aleatoria
+    SET @fechaNacimiento = DATEADD(DAY, (RAND() * (DATEDIFF(DAY, '1950-01-01', '2000-12-31'))), '1950-01-01');
+
+    -- Insertar en la tabla Usuario
+    INSERT INTO Usuario (nombre, apellido, dni, email, domicilio, telefono, idCiudad, fechaNacimiento)
+    VALUES (@nombre, @apellido, @dni, @email, @domicilio, @telefono, @idCiudad, @fechaNacimiento);
+
+    SET @i = @i + 1;
+END;
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+select * from usuario
 
 
 -- Inserción de 30 consultas
@@ -252,7 +257,6 @@ DECLARE @SubTotal FLOAT;
 DECLARE @Producto INT;
 DECLARE @Venta INT;
 
-
 -- Inserción de VentaDetalle
 DECLARE @i INT = 1;
 WHILE @i <= @MaxVentas
@@ -276,3 +280,4 @@ END
 -----------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------
 select * from VentaDetalle;
+

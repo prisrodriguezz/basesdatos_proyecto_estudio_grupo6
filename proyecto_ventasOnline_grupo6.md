@@ -286,7 +286,7 @@ Acceso al documento [PDF](doc/diccionario_.pdf) del diccionario de datos.
 
 Fusce auctor finibus lectus, in aliquam orci fermentum id. Fusce sagittis lacus ante, et sodales eros porta interdum. Donec sed lacus et eros condimentum posuere. 
 
-> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_1](script/tema01_nombre_tema)
+> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_1](script/Tema1_manejoDePermisosANivelDeUsuarioBD/Tema1_script.sql)
 
 ### Desarrollo TEMA 2 "----"
 

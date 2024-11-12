@@ -94,11 +94,11 @@ Hay diferentes tipos de procedimientos en SQL Server:
 
 - **Los definidos por el usuario:** son creados por el usuario para realizar tareas especificas. Pueden recibir o no parametros.
 En el siguiente ejemplo, el procedimiento 'ObtenerClientesActivos' devuelve una lista de clientes activos.
->>  CREATE PROCEDURE ObtenerClientesActivos
-    AS
-    BEGIN
-        SELECT ClienteID, Nombre, Ciudad FROM Clientes WHERE Activo = 1;
-    END;
+>> CREATE PROCEDURE ObtenerClientesActivos
+>> AS
+>> BEGIN
+>> 	SELECT ClienteID, Nombre, Ciudad FROM Clientes WHERE Activo = 1;
+>> END;
 
 - **Los temporales:** se almacenan en la base de datos **tempdb**. Existen procedimientos temporales locales (solo visibles en la sesión actual, se elimina cuando se cierra la conexión) y globales (visibles en todas las sesiones, se elimina cuando la última conexión que lo usa se cierra).
 El siguiente ejemplo devuelve todas las columnas de los primeros 10 registros de la tabla 'Productos'.

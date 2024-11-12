@@ -90,18 +90,83 @@ En SQL Server, los **procedimientos almacenados** son conjuntos de instrucciones
 
 Aportan varios beneficios: permiten reutilizar y simplificar el código al encapsular tareas comunes de la base de datos, facilitan el mantenimiento (las aplicaciones que los llaman no necesitan conocer los detalles internos) y suelen ser más rápidos gracias a los planes de ejecución precompilados que SQL Server reutiliza para mejorar el rendimiento.
 
-Hay diferentes tipos de procedimientos en SQL Server, como los definidos por el usuario (para tareas específicas), los temporales (usados solo durante una sesión específica), y los del sistema (para mantenimiento y operaciones internas de SQL Server). También existen procedimientos extendidos, que permiten llamar a bibliotecas externas.
+Hay diferentes tipos de procedimientos en SQL Server:
+
+- **Los definidos por el usuario:** son creados por el usuario para realizar tareas especificas. Pueden recibir o no parametros.
+En el siguiente ejemplo, el procedimiento 'ObtenerClientesActivos' devuelve una lista de clientes activos.
+>>  CREATE PROCEDURE ObtenerClientesActivos
+    AS
+    BEGIN
+        SELECT ClienteID, Nombre, Ciudad FROM Clientes WHERE Activo = 1;
+    END;
+
+- **Los temporales:** se almacenan en la base de datos **tempdb**. Existen procedimientos temporales locales (solo visibles en la sesión actual, se elimina cuando se cierra la conexión) y globales (visibles en todas las sesiones, se elimina cuando la última conexión que lo usa se cierra).
+El siguiente ejemplo devuelve todas las columnas de los primeros 10 registros de la tabla 'Productos'.
+>>  CREATE PROCEDURE **#**ProcedimientoTemporalLocal
+    AS
+    BEGIN
+        SELECT TOP 10 * FROM Productos;
+    END;
+*Una vez que la conexión que creó el procedimiento se cierra, este procedimiento se elimina automáticamente. Este tipo de procedimiento es útil para operaciones que se necesitan realizar solo de forma transitoria en la sesión actual.*
+
+El siguiente ejemplo devuelve todas las columnas de la tabla 'Ordenes' donde la columna 'FechaOrden' cumple con la restriccion de fecha.
+>>  CREATE PROCEDURE **##**ProcedimientoTemporalGlobal
+   AS
+    BEGIN
+        SELECT * FROM Ordenes WHERE FechaOrden > GETDATE() - 30;
+    END;
+*Se elimina automáticamente cuando la última sesión que lo esté usando se cierra. Este tipo de procedimiento es útil cuando se necesita compartir temporalmente una consulta específica entre diferentes sesiones.*
+
+- **Los del sistema:** SQL Server incluye procedimientos del sistema (que inician con sp_) para ayudar en el mantenimiento y las operaciones internas. Estos están almacenados en la base de datos master.
+El siguiente ejemplo muestra la estructura de la tabla 'Clientes'.
+>> EXEC **sp_**help 'Clientes';
+ 
+- **Procedimientos extendidos:** los procedimientos extendidos (xp_) permiten a SQL Server ejecutar funciones externas en el sistema operativo, como interactuar con archivos y sistemas. Estos se utilizan con precaución, ya que acceden a recursos externos.
+El sguiente ejemplo ejecuta el comando dir para mostrar el contenido de la carpeta 'C:\Archivos'.
+>> EXEC **xp_**cmdshell 'dir C:\Archivos';
+*'xp_cmdshell' permite ejecutar comandos del sistema operativo desde SQL Server (es necesario habilitar este procedimiento primero).*
+
+En SQL Server, se pueden manejar errores dentro de un procedimiento almacenado utilizando las instrucciones **TRY...CATCH**. Esto permite capturar y gestionar errores que ocurran durante la ejecución de las instrucciones dentro del bloque TRY.
+Ejemplo de uso:
+>>  CREATE PROCEDURE NombreProcedimiento
+    AS
+    BEGIN
+        BEGIN TRY
+            -- Código que puede causar error
+            DELETE FROM Clientes WHERE ClienteID = 100;
+        END TRY
+        BEGIN CATCH
+            -- Si ocurre un error en el bloque TRY, se ejecutan las instrucciones del bloque CATCH
+            PRINT 'Error: ' + ERROR_MESSAGE();
+        END CATCH;
+    END;
 
 
 - **FUNCIONES ALMACENADAS**
 
-Por otro lado, las **funciones almacenadas** en SQL Server son rutinas que permiten encapsular lógicas de cálculo y operaciones complejas dentro de una función que puede ser reutilizada en múltiples consultas y procedimientos. Existen principalmente tres tipos en SQL Server: escalares, con valores de tabla, y funciones del sistema.
+Por otro lado, las **funciones almacenadas** en SQL Server son rutinas que permiten encapsular lógicas de cálculo y operaciones complejas dentro de una función que puede ser reutilizada en múltiples consultas y procedimientos. **SQL Server** proporciona funciones integradas pero ademas permite crear funciones definidas por el usuario.
 
-- Escalares: Devuelven un único valor escalar (numérico, cadena, etc.) que puede usarse en cualquier expresión o cláusula SELECT.
-- Con valores de tabla: Estas funciones devuelven un conjunto de resultados de tipo tabla, lo cual permite tratar la salida como una tabla en consultas JOIN y otras operaciones.
-- Funciones del sistema: Estas son funciones integradas en SQL Server que no pueden modificarse, como GETDATE() o CURRENT_TIMESTAMP, y sirven para obtener valores de uso frecuente del sistema.
+- Funciones integradas (del sistema):
+      Funciones de agregado --> SUM, AVG, COUNT, MAX, MIN
+	  Funciones de fecha y hora --> GETDATE, DAY, MONTH, YEAR, DATEADD, DATEDIF, ISDATE
+      Funciones matematicas --> ABD, RAND, LOG10, SQRT, POWER, TAN, PI, RADIANS
 
-A diferencia de los procedimientos almacenados, las funciones no pueden modificar tablas externas ni realizar cambios permanentes en el estado de la base de datos. Si se produce un error dentro de una función, la ejecución se detiene y se cancela la función completa. 
+- Funciones definidas por el usuario: devuelven un solo valor de tipo escalar, como un número, texto, fecha u otro tipo de dato único. Pueden aceptar uno o varios parámetros de entrada y usarse en cualquier parte de una consulta donde sea válido un valor, como en la lista de selección de una instrucción **SELECT**, o en condiciones **WHERE** o **ORDER BY**. Son útiles cuando se necesita encapsular lógica o cálculos repetitivos en un único lugar para simplificar el código y facilitar la reutilización.
+
+A diferencia de los procedimientos almacenados, las funciones no pueden modificar tablas externas ni realizar cambios permanentes en el estado de la base de datos. Si se produce un error dentro de una función, la ejecución se detiene y se cancela la función completa.
+
+Sintaxis para la creacion de una funcion:
+CREATE FUNCTION nombreFuncion (@parametro1 tipo, @parametro2 tipo, ...)
+RETURNS tipoDeDato_queRetorna
+AS
+BEGIN
+    -- Declaración de variables locales
+    DECLARE @variable_local tipo_de_dato;
+    -- Cuerpo de la función (cálculos, operaciones, etc.)
+    -- Devolver el resultado de la función
+    RETURN @variable_local;
+END;
+
 
 
 ## TEMA 3 " : OPTIMIZACIÓN DE CONSULTAS A TRAVES DE ÍNDICES 

@@ -53,6 +53,7 @@ CREATE TABLE Usuario
   domicilio VARCHAR(100) NOT NULL,
   telefono VARCHAR(12),
   idCiudad INT NOT NULL,
+  fechaNacimiento DATE NOT NULL,
   constraint PK_Usuario_id PRIMARY KEY (idUsuario),
   constraint FK_Ciudad_id FOREIGN KEY (idCiudad) REFERENCES Ciudad(idCiudad)
 );

@@ -131,7 +131,7 @@ El siguiente ejemplo muestra la estructura de la tabla 'Clientes'.<br>
  
 - **Procedimientos extendidos:** los procedimientos extendidos (xp_) permiten a SQL Server ejecutar funciones externas en el sistema operativo, como interactuar con archivos y sistemas. Estos se utilizan con precaución, ya que acceden a recursos externos.<br>
 El sguiente ejemplo ejecuta el comando dir para mostrar el contenido de la carpeta 'C:\Archivos'.<br>
-```EXEC **xp_**cmdshell 'dir C:\Archivos';```
+```EXEC **xp_**cmdshell 'dir C:\Archivos';```<br>
 *'xp_cmdshell' permite ejecutar comandos del sistema operativo desde SQL Server (es necesario habilitar este procedimiento primero).* <br>
 
 En SQL Server, se pueden manejar errores dentro de un procedimiento almacenado utilizando las instrucciones **TRY...CATCH**. Esto permite capturar y gestionar errores que ocurran durante la ejecución de las instrucciones dentro del bloque TRY.

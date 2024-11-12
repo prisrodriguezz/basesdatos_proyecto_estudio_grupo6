@@ -153,9 +153,10 @@ Por otro lado, las **funciones almacenadas** en SQL Server son rutinas que permi
 
 - Funciones definidas por el usuario: devuelven un solo valor de tipo escalar, como un número, texto, fecha u otro tipo de dato único. Pueden aceptar uno o varios parámetros de entrada y usarse en cualquier parte de una consulta donde sea válido un valor, como en la lista de selección de una instrucción **SELECT**, o en condiciones **WHERE** o **ORDER BY**. Son útiles cuando se necesita encapsular lógica o cálculos repetitivos en un único lugar para simplificar el código y facilitar la reutilización.
 
-A diferencia de los procedimientos almacenados, las funciones no pueden modificar tablas externas ni realizar cambios permanentes en el estado de la base de datos. Si se produce un error dentro de una función, la ejecución se detiene y se cancela la función completa.
+A diferencia de los procedimientos almacenados, las funciones no pueden modificar tablas externas ni realizar cambios permanentes en el estado de la base de datos. Si se produce un error dentro de una función, la ejecución se detiene y se cancela la función completa.<br>
 
-Sintaxis para la creacion de una funcion:
+Sintaxis para la creacion de una funcion:<br>
+```
 CREATE FUNCTION nombreFuncion (@parametro1 tipo, @parametro2 tipo, ...)
 RETURNS tipoDeDato_queRetorna
 AS
@@ -166,6 +167,8 @@ BEGIN
     -- Devolver el resultado de la función
     RETURN @variable_local;
 END;
+```
+
 
 
 

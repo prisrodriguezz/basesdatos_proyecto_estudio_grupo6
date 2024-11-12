@@ -106,7 +106,7 @@ END;
 
 El siguiente ejemplo devuelve todas las columnas de los primeros 10 registros de la tabla 'Productos'. <br>
 ```
-CREATE PROCEDURE **#**ProcedimientoTemporalLocal
+CREATE PROCEDURE #ProcedimientoTemporalLocal
 AS
 BEGIN
 	SELECT TOP 10 * FROM Productos;
@@ -116,7 +116,7 @@ END;
 
 El siguiente ejemplo devuelve todas las columnas de la tabla 'Ordenes' donde la columna 'FechaOrden' cumple con la restriccion de fecha.<br>
 ```
-CREATE PROCEDURE **##**ProcedimientoTemporalGlobal
+CREATE PROCEDURE ##ProcedimientoTemporalGlobal
 AS
 BEGIN
 	SELECT * FROM Ordenes WHERE FechaOrden > GETDATE() - 30;

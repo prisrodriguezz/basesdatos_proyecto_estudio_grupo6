@@ -230,14 +230,28 @@ Cree índices filtrados para atender consultas que devuelven un subconjunto bien
 
 ## **TEMA 4 " MANEJO DE TIPO DE DATO JSON "** 
 
-** JSON: Java Script Object Notation **
+## JSON: Java Script Object Notation 
 
 Se usa principalmente para enviar y recibir datos puede ser para intercambios de datos entre un servidor y una página web. En bases de datos relacionales permite almacenar y manipular datos semi-estructurados en un formato de texto flexible y compatible con aplicaciones modernas. El soporte para JSON se ha convertido en una característica valiosa para trabajar con datos dinámicos o menos rígidos, especialmente en aplicaciones web y móviles que utilizan JSON 
 
  • JSON se vale del concepto “clave-valor”, donde para cada clave existente existe un valor asociado. 
 
  • Un conjunto de claves y valores conforman un objeto, que en JSON se representa mediante la apertura y cierre de llaves { }. 
- 
+
+Almacenamiento de Datos JSON: En SQL Server, JSON se almacena generalmente en columnas de tipo NVARCHAR, ya que JSON es esencialmente texto estructurado. Esto permite almacenar JSON como una cadena dentro de la tabla, facilitando el uso de datos semi-estructurados junto con datos tabulares tradicionales. 
+
+Consultas de Datos JSON:
+	• SQL Server ofrece funciones como JSON_VALUE, JSON_QUERY, y OPENJSON, que permiten leer y extraer valores específicos o subconjuntos del JSON. 
+	• JSON_VALUE: Extrae un valor escalar (como una cadena o número) de un campo JSON. 
+	• JSON_QUERY: Devuelve una subestructura JSON, útil para extraer objetos JSON o arrays completos. 
+	• OPENJSON: Convierte JSON en formato tabular, permitiendo acceder a cada par clave-valor y trabajar con él como si fuera una tabla. 
+
+ Para optimizar consultas frecuentes, es posible crear columnas calculadas basadas en valores JSON (por ejemplo, extraer un ID o una fecha de un objeto JSON en una columna calculada). Estas columnas calculadas pueden ser indexadas para mejorar el rendimiento. 
+
+Operaciones CRUD: 
+	• Insertar: Los datos JSON se pueden insertar como texto en columnas NVARCHAR. 
+	• Actualizar y Eliminar: SQL Server permite actualizar datos JSON usando funciones para modificar valores específicos sin reescribir el JSON completo. 
+	• Consultas: Las funciones de JSON y columnas calculadas facilitan la consulta directa de propiedades JSON sin necesidad de extraer todo el objeto. 
 
 ## CAPÍTULO III: METODOLOGÍA SEGUIDA 
 

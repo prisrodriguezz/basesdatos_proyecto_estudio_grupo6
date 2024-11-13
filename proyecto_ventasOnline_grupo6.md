@@ -643,6 +643,13 @@ Todos ellos con sus ventajas, y siempre teniendo en cuenta para el caso en el qu
 Pero sin duda, los datos y los análisis realizados lo dejan en evidencia sin ningún tipo de discusión sobre el mismo.
 
 
+### CONCLUSIONES TEMA 4: mANEJO DE TIPO DE DATO JSON
+
+El manejo de JSON en SQL Server permite almacenar datos no estructurados junto con datos estructurados, ofreciendo flexibilidad ideal para información dinámica que cambia con frecuencia. Sin embargo, tiene limitaciones de rendimiento, ya que el acceso a datos JSON es más lento que el acceso a columnas tradicionales esto se puede observar en el tiempo de respuesta; por ello, su uso debe planearse cuidadosamente, especialmente en sistemas de alta concurrencia o con grandes volúmenes de datos.
+Para optimizar el rendimiento al trabajar con JSON en consultas frecuentes, se pueden emplear columnas calculadas e índices, que ayudan a mejorar la eficiencia de las operaciones comunes.
+
+
+
 
 ## BIBLIOGRAFÍA DE CONSULTA
 

@@ -184,7 +184,7 @@ END;
 
 
 
-## TEMA 3 " : OPTIMIZACIÓN DE CONSULTAS A TRAVES DE ÍNDICES 
+## TEMA 3: OPTIMIZACIÓN DE CONSULTAS A TRAVES DE ÍNDICES 
 
 ### MANEJOS DE INDICES EN SQL:
 
@@ -228,7 +228,7 @@ Cree índices filtrados para atender consultas que devuelven un subconjunto bien
 
 
 
-## **TEMA 4 " MANEJO DE TIPO DE DATO JSON "** 
+## TEMA 4: MANEJO DE TIPO DE DATO JSON "
 
 ## JSON: Java Script Object Notation 
 
@@ -308,15 +308,215 @@ Se realizaron pruebas para asegurar que los permisos fueron correctamente asigna
 
 > Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_1](script/Tema1_manejoDePermisosANivelDeUsuarioBD/Tema1_script.sql)
 
-### Desarrollo TEMA 2 "----"
+### Desarrollo TEMA 2: PROCEDIMIENTOS Y FUNCIONES ALMACENADAS
 
-Proin aliquet mauris id ex venenatis, eget fermentum lectus malesuada. Maecenas a purus arcu. Etiam pellentesque tempor dictum. 
+En este capítulo se presentan los resultados obtenidos del análisis y desarrollo de los procedimientos y funciones dentro del sistema de gestión de datos propuesto. Se muestra la eficiencia lograda en el acceso y manipulación de los datos, haciendo énfasis en la comparación entre operaciones directas y el uso de procedimientos y funciones almacenados. 
+
+- **PROCEDIMIENTOS ALMACENADOS**
+Los procedimientos almacenados se diseñaron para optimizar las operaciones de consulta y manipulación de datos, asegurando un manejo de permisos adecuado y una mejor organización de las operaciones frecuentes.<br>
+A continuación, se presentan algunos ejemplos de estos procedimientos:
+
+- **Procedimiento: SP_InsertarProducto**
+- Función: Este procedimiento se utiliza para insertar un nuevo producto en la base de datos, verificando primero que no exista un producto con el mismo nombre, descripción y categoría. Esto garantiza que no haya duplicados en la tabla Producto
+- Parámetros:<br>
+  @nombreProducto (VARCHAR(50)): Nombre del producto a insertar.<br>
+  @descripcion (VARCHAR(100)): Descripción del producto.<br>
+  @precio (FLOAT): Precio del producto.<br>
+  @idCategoria (INT): ID de la categoría a la que pertenece el producto.<br>
+- Ejecución y Resultados: Este procedimiento ejecuta una verificación antes de realizar la inserción. Si no existe un producto con el mismo nombre, descripción y categoría, el producto será insertado correctamente en la tabla Producto. Si el producto ya existe, se muestra un mensaje de error. La eficiencia de este procedimiento radica en la prevención de duplicados y en la simplificación de la lógica de inserción, lo cual evita errores en la base de datos.
+- Impacto en la eficiencia: Asegura que no se realicen inserciones innecesarias y reduce el riesgo de errores al realizar consultas directas sin validación. Además, mejora la integridad de los datos mediante la validación previa.
+- Ejemplo de codigo:<br>
+```
+CREATE PROCEDURE SP_InsertarProducto
+  @nombreProducto VARCHAR(50),
+  @descripcion VARCHAR(100),
+  @precio FLOAT,
+  @idCategoria INT
+AS
+BEGIN
+  BEGIN TRY
+	-- Verifica que no exista el producto que se quiere insertar
+	IF NOT EXISTS (SELECT 1 FROM Producto WHERE nombreProducto = @nombreProducto AND descripcion = @descripcion AND idCategoria = @idCategoria)
+		BEGIN
+			-- Insercion del producto
+			INSERT INTO Producto (nombreProducto, descripcion, precio, idCategoria)
+			VALUES (@nombreProducto, @descripcion, @precio, @idCategoria);
+
+			-- Mensaje de exito
+			PRINT 'Producto insertado correctamente';
+		END
+	ELSE
+		BEGIN
+			-- Mensaje de error si el producto ya existe
+			PRINT 'El producto que se desea insertar ya existe';
+		END
+  END TRY
+
+  BEGIN CATCH
+    -- Si ocurre un error en el bloque TRY, captura el error y muestra el mensaje
+    PRINT 'Error al insertar el producto: ' + ERROR_MESSAGE();
+  END CATCH
+END;
+```
+<br>
+
+- **Procedimiento: SP_ModificarPrecioProducto**
+- Función: Este procedimiento permite modificar el precio de un producto existente en la base de datos. Antes de realizar la actualización, verifica si el producto con el ID proporcionado existe en la base de datos.
+- Parámetros:<br>
+  @idProducto (INT): ID del producto cuyo precio se desea modificar.<br>
+  @precio (FLOAT): Nuevo precio para el producto.<br>
+- Ejecución y Resultados: El procedimiento primero valida si el producto con el ID especificado existe. Si es así, actualiza el precio del producto en la tabla Producto. En caso de que el producto no exista, se muestra un mensaje de error. La eficiencia se ve reflejada en la validación antes de la actualización, evitando que se intente modificar un producto inexistente.
+- Impacto en la eficiencia: Garantiza que no se realicen actualizaciones innecesarias o sobre registros que no existen, lo que optimiza el manejo de datos y evita errores.
+- Ejemplo de codigo:
+```
+CREATE PROCEDURE SP_ModificarPrecioProducto
+  @idProducto INT,
+  @precio FLOAT
+AS
+BEGIN
+BEGIN TRY
+    -- Verifica si el producto existe antes de la actualización
+    IF EXISTS (SELECT 1 FROM Producto WHERE idProducto = @idProducto)
+    BEGIN
+        -- Actualización del precio
+        UPDATE Producto
+            SET precio = @precio
+        WHERE idProducto = @idProducto; 
+
+        -- Mensaje de éxito si la actualización fue realizada
+        PRINT 'Precio del producto modificado correctamente';
+    END
+    ELSE
+    BEGIN
+        -- Mensaje de error si el producto no existe
+        PRINT 'El producto con el ID especificado no existe';
+    END
+  END TRY
+
+  BEGIN CATCH
+    -- Si ocurre un error en el bloque TRY, captura el error y muestra el mensaje
+    PRINT 'Error al modificar el producto: ' + ERROR_MESSAGE();
+  END CATCH
+END;
+```
+
+- **FUNCIONES ALMACENADAS**
+Las funciones almacenadas se han diseñado para realizar operaciones específicas de lectura y validación de datos, asegurando un acceso más rápido y seguro a los registros requeridos.<br>
+Los ejemplos a continuación muestran algunas de las funciones implementadas:
+
+- **Función: FN_CalcularTotalVenta**
+- Propósito: Esta función tiene como objetivo calcular el total de una venta basándose en los registros de la tabla VentaDetalle correspondientes a un número de facturación específico. Suma los valores de la columna subTotal para calcular el total de la venta.
+- Parámetro de entrada:<br>
+ @nroFacturacion (INT): Número de facturación de la venta.<br>
+- Valor retornado: Retorna un valor de tipo **FLOAT**, que representa el total de la venta (suma de los subtotales de los productos vendidos en esa facturación).
+- Ejemplo de codigo:<br>
+```
+CREATE FUNCTION FN_CalcularTotalVenta (@nroFacturacion INT)
+RETURNS FLOAT -- Retorna un valor float
+AS
+BEGIN
+  DECLARE @totalVenta FLOAT;
+
+  -- Busca en la tabla VentaDetalle todos los registros que corresponden al @nroFacturacion y suma los valores de la columna subTotal
+  -- Asigna el resultado de la suma a la variable @totalVenta
+  SELECT @totalVenta = SUM(subTotal)
+  FROM VentaDetalle
+  WHERE nroFacturacion = @nroFacturacion;
+
+  RETURN @totalVenta; -- Retorna el total
+END;
+```
+<br>
+- **Función: FN_ProductoMasVendido**
+- Propósito: Esta función tiene como objetivo devolver el producto más vendido, es decir, el producto con mayor cantidad vendida. Retorna los detalles del producto más vendido, incluyendo su nombre, precio, categoría y cantidad vendida.
+- Parámetros de entrada: Ninguno.
+- Valor retornado: Retorna un conjunto de resultados en formato de tabla que contiene la información del producto más vendido, con columnas como idProducto, nombreProducto, precio, Categoria y Cant Vendida.
+- Ejemplo de codigo: <br>
+```
+CREATE FUNCTION FN_ProductoMasVendido()
+RETURNS TABLE  -- Devuelve un conjunto de resultados en formato de tabla en linea
+AS
+RETURN
+(
+    SELECT TOP 1 VD.idProducto, P.nombreProducto, P.precio, C.descripcion AS Categoria, SUM(VD.cantidad) AS 'Cant Vendida'
+    FROM 
+        VentaDetalle VD
+    JOIN 
+        Producto P ON VD.idProducto = P.idProducto
+	JOIN
+		Categoria C ON C.idCategoria = P.idCategoria
+    GROUP BY 
+        VD.idProducto, P.nombreProducto, P.precio, C.descripcion
+    ORDER BY 
+        SUM(VD.cantidad) DESC
+);
+```
+<br>
+- **Función: FN_CalcularEdad**
+- Propósito: Esta función calcula la edad de un usuario en base a su fecha de nacimiento almacenada en la base de datos. La edad se calcula restando la fecha de nacimiento de la fecha actual.
+- Parámetro de entrada:<br>
+ @idUsuario (INT): ID del usuario cuyo cálculo de edad se requiere.<br>
+- Valor retornado: Retorna un valor de tipo INT que representa la edad del usuario.
+- Ejemplo de codigo: <br>
+```
+CREATE FUNCTION FN_CalcularEdad (@idUsuario INT)
+RETURNS INT
+AS
+BEGIN
+    DECLARE @fechaNacimiento DATE;
+    DECLARE @edad INT;
+
+    -- Obtener la fecha de nacimiento del usuario
+    SELECT @fechaNacimiento = fechaNacimiento
+    FROM Usuario
+    WHERE idUsuario = @idUsuario;
+
+    -- Calcula la edad
+    SET @edad = DATEDIFF(YEAR, @fechaNacimiento, GETDATE());
+
+
+	-- Verifica si el mes de nacimiento de la persona es posterior al mes actual
+	-- o si el mes de nacimiento es el mismo que el mes actual y el día de nacimiento es posterior al día actual
+    IF (MONTH(@fechaNacimiento) > MONTH(GETDATE()))
+        OR (MONTH(@fechaNacimiento) = MONTH(GETDATE()) AND DAY(@fechaNacimiento) > DAY(GETDATE()))
+    BEGIN
+        SET @edad = @edad - 1;
+    END
+
+    RETURN @edad;
+END;
+```
+<br>
+
+- **Comparación de Eficiencia entre Operaciones Directas y Procedimientos/Funciones Almacenados**
+En esta sección, se presentan los resultados de una comparación entre la eficiencia de las operaciones directas y el uso de procedimientos y funciones almacenadas. Los principales aspectos de comparación incluyen el tiempo de ejecución, el consumo de recursos y la gestión de permisos.<br>
+
+| **Operación**                 | **Tiempo (ms) - Directo**  | **Tiempo (ms) - Procedimiento/Función** | **Mejora (%)** |
+|-------------------------------|----------------------------|-----------------------------------------|----------------|
+| **Inserción**                 | 294 ms                    | 339 ms                                 | -15.3%         |
+| **Actualización**             | 295 ms                    | 358 ms                                 | -17.6%         |
+| **Cálculo Total de Venta**    | 38 ms                     | 113 ms                                 | -66.4%         |
+| **Producto Más Vendido**      | 300 ms                    | 136 ms                                 | 54.7%          |
+
+- **Análisis de resultados:**
+- Inserción: La operación directa fue ligeramente más rápida, con una mejora del 15.3% en comparación con el procedimiento almacenado. Sin embargo, los procedimientos almacenados proporcionan ventajas en cuanto a seguridad y reutilización de planes de ejecución, lo que puede mejorar el rendimiento en entornos de alta concurrencia.
+
+- Actualización: La actualización directa también fue más eficiente, con una mejora de aproximadamente 17.6%. No obstante, el uso de procedimientos almacenados ofrece beneficios en términos de control de acceso y seguridad, permitiendo limitar los permisos directos sobre las tablas y protegiendo la integridad de los datos.
+
+- Cálculo Total de Venta: El cálculo directo fue significativamente más rápido, con una mejora del 66.4% frente a la ejecución mediante una función. Aunque las funciones almacenadas pueden ofrecer mejor organización y reutilización de código, en este caso, la función presentó una sobrecarga que afectó la eficiencia de la operación.
+
+- Producto Más Vendido: En este caso, el uso de la función fue más eficiente, con una mejora del 54.7% frente a la consulta directa. Esto puede ser el resultado de una optimización de la función que evita operaciones redundantes presentes en la consulta directa. No obstante, es importante considerar que en otros escenarios más complejos, las funciones podrían ser menos eficientes.
+
+- Cálculo de Edad: El cálculo de la edad realizado sin la función fue más rápido, con una mejora del 10%. La consulta directa que utiliza DATEDIFF demostró ser más eficiente en este caso en comparación con la función FN_CalcularEdad, lo que refuerza la conclusión de que, para cálculos simples, las operaciones directas suelen ser más rápidas y eficientes.
+
+En general, para operaciones sencillas, las consultas directas ofrecen un rendimiento superior debido a la menor sobrecarga que implican. Sin embargo, los procedimientos y funciones almacenadas son más adecuadas en escenarios donde se requiere seguridad, reutilización de código y control de acceso. La elección entre ambos enfoques depende de la complejidad de la operación y de las necesidades de seguridad y rendimiento del sistema.
 
 
 
 
 
-### Desarrollo TEMA 3 OPTIMIZACIÓN DE CONSULTAS A TRAVES DE ÍNDICES 
+
+### Desarrollo TEMA 3: OPTIMIZACIÓN DE CONSULTAS A TRAVES DE ÍNDICES 
 CAP 4
 A continuación se presentara los hallazgos de la investigación llevada a cabo cobre el mencionado tema.
 

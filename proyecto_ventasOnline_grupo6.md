@@ -286,7 +286,21 @@ Acceso al documento [PDF](doc/diccionario_.pdf) del diccionario de datos.
 
 ### Desarrollo TEMA 1 "----"
 
-Fusce auctor finibus lectus, in aliquam orci fermentum id. Fusce sagittis lacus ante, et sodales eros porta interdum. Donec sed lacus et eros condimentum posuere. 
+Este capítulo describe el proceso de desarrollo y presentación de resultados en la gestión de permisos y roles en una base de datos SQL Server. 
+Explicacion de temas tecnicos trabajados y resultados:
+
+ Creación de Usuarios y Asignación de Roles
+En este tema se implementaron instrucciones para crear usuarios en el servidor y asignarles roles de acceso específicos a la base de datos. Se crearon usuarios con diferentes niveles de permisos: de solo lectura y de administrador. A través de los roles, se gestionó de manera eficiente qué operaciones podía realizar cada usuario.
+
+ Asignación de Permisos
+A continuación, se asignaron permisos de acceso a las tablas mediante la inclusión de los usuarios en roles predefinidos como db_datareader (solo lectura) y db_owner (administrador). También se asignaron permisos específicos sobre procedimientos almacenados para permitir la inserción de datos sin dar acceso directo a las tablas.
+
+ Procedimientos Almacenados
+Se desarrollaron procedimientos almacenados para encapsular la lógica de inserción de datos en las tablas, permitiendo a los usuarios realizar operaciones específicas sin la necesidad de acceder directamente a las tablas.
+
+ Pruebas de Permisos
+Se realizaron pruebas para asegurar que los permisos fueron correctamente asignados. Los usuarios con permisos de solo lectura pudieron consultar datos, pero no modificar los registros. Los administradores, por otro lado, pudieron insertar, modificar y eliminar datos sin restricciones.
+
 
 > Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_1](script/Tema1_manejoDePermisosANivelDeUsuarioBD/Tema1_script.sql)
 

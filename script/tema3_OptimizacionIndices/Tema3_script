@@ -1,1 +1,52 @@
-.
+use tiendaOnline_BD4;
+
+--se utiliza para ver los tiempos de CPU
+  SET STATISTICS IO ON;
+SET STATISTICS TIME ON;
+
+--con esto lo saco
+SET STATISTICS TIME OFF;
+SET STATISTICS IO OFF;
+
+
+--consulto que no hay INDICE asociado
+execute sp_helpindex 'Usuario'
+-------------------------------------------------------------
+--Nuestra consulta base que vamos a utilizar:
+
+SELECT * 
+FROM Usuario
+WHERE fechaNacimiento BETWEEN '1990-01-01' AND '1992-12-31'
+ORDER BY idCiudad, apellido;
+-----------------------------------------------------------
+
+
+
+--creo indice agrupado
+CREATE CLUSTERED INDEX IDX_Usuario_fechaNacimiento
+on Usuario (fechaNacimiento)
+
+execute sp_helpindex 'Usuario'--consulto que se creo
+
+--elimino indice agrupado
+DROP INDEX IDX_Usuario_fechaNacimiento ON Usuario;
+
+execute sp_helpindex 'Usuario'--consulto que se haya eliminado
+
+--vuelvo a comprobar la consulñta
+
+  SELECT * 
+FROM Usuario
+WHERE fechaNacimiento BETWEEN '1990-01-01' AND '1992-12-31'
+ORDER BY idCiudad, apellido;
+--------------------------------------------------------------------------
+
+
+--Creo Indice con varias columnas con nombre y ciudad
+  CREATE CLUSTERED INDEX IDX_Usuario_fechaNacimiento_idCiudad_apellido
+ON Usuario (fechaNacimiento, idCiudad, apellido);
+
+--quito indice:
+DROP INDEX IDX_Usuario_fechaNacimiento_idCiudad_apellido ON Usuario;
+
+-------------------------------------------------------------------------

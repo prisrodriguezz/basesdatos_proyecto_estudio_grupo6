@@ -651,7 +651,7 @@ Pero sin duda, los datos y los análisis realizados lo dejan en evidencia sin ni
  2. Procedimientos Almacenados
     > Acceder a el siguiente enlace  [tema2](https://learn.microsoft.com/es-es/sql/relational-databases/stored-procedures/stored-procedures-database-engine?view=sql-server-ver16)
  3. Optimizacion de consultas a traves de indices
-     > Acceder a el siguiente enlace  [tema3] https://learn.microsoft.com/es-es/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver16
+     > Acceder a el siguiente enlace  [tema3] (https://learn.microsoft.com/es-es/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver16)
  4. Manejo de tipos de datos JSON
 
 

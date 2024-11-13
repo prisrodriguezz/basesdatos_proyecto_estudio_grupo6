@@ -617,18 +617,20 @@ No obstante, el uso de JSON implica ciertos desafíos de rendimiento, ya que acc
 
 ## CAPÍTULO V: CONCLUSIONES
 
-    ### CONSLUIONES TEMA 3: OPTIMIZACIÓN DE CONSULTAS A TRAVES DE ÍNDICES:
+### CONSLUIONES TEMA 3: OPTIMIZACIÓN DE CONSULTAS A TRAVES DE ÍNDICES:
 
-    En este estudio, se demostró el impacto significativo que los índices pueden tener en el rendimiento de las consultas en SQL Server Teniendo como base las consultas
-     realizadas con la tabla `Usuario` seleccionada
+En este estudio, se demostró el impacto significativo que los índices pueden tener en el rendimiento de las consultas en SQL Server Teniendo como base las consultas 
+realizadas con la tabla Usuario seleccionada
 
-Se pudo comprobar cómo la creación de índices, en este caso `fechaNacimiento`, ayudo en el tiempo de ejecución y a reducir el uso de recursos del CPU, como se mostró en los
+
+Se pudo comprobar cómo la creación de índices, en este caso fechaNacimiento, ayudo en el tiempo de ejecución y a reducir el uso de recursos del CPU, como se mostró en los
  registros más arriba.
 
 Al principio, sin ningún índice aplicado, la consulta mostró un tiempo de CPU de 804msy además  un 66% del tiempo total de ejecución. Esto refleja que la consulta tenía que recorrer 
-toda la tabla sin ninguna optimización, lo que hace que la búsqueda sea más lenta. Pero, después de la creación del índice `IDX_Usuario_fechaNacimiento` sobre la columna
- `fechaNacimiento`, el tiempo de CPU disminuyó a 649ms, y mostrando un 13% del tiempo de ejecución total. Mostrando una la mejora en el rendimiento que los índices pueden proporcionar cuando se buscan registros específicos por fecha.
-Lo mismo se vio en el impacto con respecto al índice agrupado que incluyo mas de una columna (columnas `fechaNacimiento`, `idCiudad` y `apellido`,).
+toda la tabla sin ninguna optimización, lo que hace que la búsqueda sea más lenta. Pero, después de la creación del índice IDX_Usuario_fechaNacimiento sobre la columna
+ fechaNacimiento, el tiempo de CPU disminuyó a 649ms, y mostrando un 13% del tiempo de ejecución total. Mostrando una la mejora en el rendimiento que los índices pueden proporcionar
+  cuando se buscan registros específicos por fecha.
+Lo mismo se vio en el impacto con respecto al índice agrupado que incluyo mas de una columna (columnas fechaNacimiento, idCiudad y apellido,).
 
 Esto resalta que los índices compuestos, cuando son bien diseñados, no solo optimizan la consulta en un campo específico, sino también cuando se agrupan varias columnas 
 relevantes para la consulta.

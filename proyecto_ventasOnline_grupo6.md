@@ -429,11 +429,12 @@ BEGIN
 END;
 ```
 <br>
+
 - **Función: FN_ProductoMasVendido**<br>
 **Propósito:** Esta función tiene como objetivo devolver el producto más vendido, es decir, el producto con mayor cantidad vendida. Retorna los detalles del producto más vendido, incluyendo su nombre, precio, categoría y cantidad vendida.<br>
 **Parámetros de entrada:** Ninguno.<br>
 **Valor retornado:** Retorna un conjunto de resultados en formato de tabla que contiene la información del producto más vendido, con columnas como idProducto, nombreProducto, precio, Categoria y Cant Vendida.<br>
-**Ejemplo de codigo:** <br>
+**Ejemplo de codigo:**<br>
 ```
 CREATE FUNCTION FN_ProductoMasVendido()
 RETURNS TABLE  -- Devuelve un conjunto de resultados en formato de tabla en linea
@@ -486,6 +487,7 @@ BEGIN
 END;
 ```
 <br>
+
 - **Comparación de Eficiencia entre Operaciones Directas y Procedimientos/Funciones Almacenados**
 
 En esta sección, se presentan los resultados de una comparación entre la eficiencia de las operaciones directas y el uso de procedimientos y funciones almacenadas. Los principales aspectos de comparación incluyen el tiempo de ejecución, el consumo de recursos y la gestión de permisos.<br>

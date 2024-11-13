@@ -622,8 +622,9 @@ No obstante, el uso de JSON implica ciertos desafíos de rendimiento, ya que acc
 
  1. Roles en el nivel de Base de Datos
     > Acceder a el siguiente enlace  [tema1](https://learn.microsoft.com/es-es/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver16)
- 2. List item
- 3. List item
- 4. List item
- 5. List item
+ 2. Procedimientos Almacenados
+    > Acceder a el siguiente enlace  [tema2](https://learn.microsoft.com/es-es/sql/relational-databases/stored-procedures/stored-procedures-database-engine?view=sql-server-ver16)
+ 3. Optimizacion de consultas a traves de indices
+ 4. Manejo de tipos de datos JSON
+
 

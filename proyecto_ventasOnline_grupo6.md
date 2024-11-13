@@ -282,7 +282,7 @@ Maecenas molestie lacus tincidunt, placerat dolor et, ullamcorper erat. Mauris t
 Acceso al documento [PDF](doc/diccionario_.pdf) del diccionario de datos.
 
 
-### Desarrollo TEMA 1 "----"
+### Desarrollo TEMA 1 MANEJO DE PERMISOS A NIVEL USUARIO EN BASE DE DATOS
 
 Este capítulo describe el proceso de desarrollo y presentación de resultados en la gestión de permisos y roles en una base de datos SQL Server. 
 Explicacion de temas tecnicos trabajados y resultados:

@@ -660,6 +660,6 @@ Para optimizar el rendimiento al trabajar con JSON en consultas frecuentes, se p
  3. Optimizacion de consultas a traves de indices
     > Acceder a el siguiente enlace  [tema3](https://learn.microsoft.com/es-es/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver16)
  4. Manejo de tipos de datos JSON
-    > Acceder a el siguiente enlace  [tema3](https://learn.microsoft.com/es-es/sql/relational-databases/json/json-data-sql-server?view=sql-server-ver16)
+    > Acceder a el siguiente enlace  [tema4](https://learn.microsoft.com/es-es/sql/relational-databases/json/json-data-sql-server?view=sql-server-ver16)
 
 

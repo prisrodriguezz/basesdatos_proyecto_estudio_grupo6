@@ -261,13 +261,11 @@ Operaciones CRUD:
 
 ## CAPÍTULO III: METODOLOGÍA SEGUIDA 
 
-Donec lobortis tincidunt erat, non egestas mi volutpat in. Cras ante purus, luctus sed fringilla non, ullamcorper at eros.
+Nuestra organización para el desarrollo de proyecto se caracteriza por la división de actividades e investigaciones sobre los temas que nos fueron asignados, el resto de actividades que involucra a todos los integrantes lo consultábamos en conjunto por reuniones virtuales así como presenciales. Por ultimo cada uno da una introducción con sus palabras a lo investigado previamente a los demás integrantes, y tiene acceso a la información completa de los temas dentro del repositorio para estudiarlo mas a profundidad. 
 
- **a) Cómo se realizó el Trabajo Práctico**
-Vestibulum rutrum feugiat molestie. Nunc id varius augue. Ut augue mauris, venenatis et lacus ut, mattis blandit urna. Fusce lobortis, quam non vehicula scelerisque, nisi enim ultrices diam, ac tristique libero ex nec orci.
+El motor es el utilizado en clases, SQL Server; es un sistema de gestión de bases de datos relacional (RDBMS) desarrollado por Microsoft, diseñado para almacenar, procesar y proteger datos con altos estándares de seguridad, rendimiento y disponibilidad. La versión utilizada del motor fue la 2019. 
 
- **b) Herramientas (Instrumentos y procedimientos)**
-Donec lobortis tincidunt erat, non egestas mi volutpat in. Cras ante purus, luctus sed fringilla non, ullamcorper at eros. Integer interdum id orci id rutrum. Curabitur facilisis lorem sed metus interdum accumsan. 
+Las herramientas utilizadas fueron: pagina oficial de Microsoft (Microsoft Learn), herramientas de IA. 
 
 
 ## CAPÍTULO IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS 

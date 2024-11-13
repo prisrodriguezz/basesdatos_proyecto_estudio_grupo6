@@ -616,7 +616,7 @@ No obstante, el uso de JSON implica ciertos desafíos de rendimiento, ya que acc
 
 ## CAPÍTULO V: CONCLUSIONES
 
-## CONCLUSIONES TEMA 1: MANEJO DE PERMISOS A NIVEL DE USUARIO DE BASE DE DATOS
+### CONCLUSIONES TEMA 1: MANEJO DE PERMISOS A NIVEL DE USUARIO DE BASE DE DATOS
 
 El desarrollo de las tareas relacionadas con el manejo de permisos y roles en bases de datos ha demostrado ser un proceso crucial para garantizar la seguridad y administración efectiva de los datos dentro de un sistema. 
 A través de la creación y gestión de usuarios, roles y permisos, hemos logrado establecer un control detallado sobre qué acciones pueden realizar diferentes usuarios en la base de datos.

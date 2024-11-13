@@ -310,13 +310,18 @@ Proin aliquet mauris id ex venenatis, eget fermentum lectus malesuada. Maecenas 
 
 > Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_2](script/tema02_nombre_tema)
 
-... 
+### Desarrollo TEMA 4 "Manejo de tipo de dato JSON"
+
+El manejo del tipo de dato JSON en bases de datos relacionales permite almacenar y consultar datos semiestructurados dentro de sistemas SQL. JSON es un formato flexible y sencillo que SQL Server soporta mediante funciones específicas, como OPENJSON y JSON_VALUE, facilitando la integración de datos estructurados y no estructurados en una misma base.
+
+Esta capacidad es útil en aplicaciones donde los datos tienen estructuras variables, como preferencias de usuario o registros de eventos. Al permitir consultas sobre JSON, SQL Server amplía su utilidad sin necesidad de transformar estos datos en tablas convencionales.
+
+No obstante, el uso de JSON implica ciertos desafíos de rendimiento, ya que acceder a datos JSON suele ser más lento que a columnas tradicionales. La optimización, mediante índices y columnas calculadas, ayuda a mitigar este impacto, aunque su uso debe planificarse para evitar sobrecargar los sistemas de alta concurrencia o grandes volúmenes de datos.
+
+> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_4](script/tema04_manejoDeTipoDeDatoJSON)
 
 
 ## CAPÍTULO V: CONCLUSIONES
-
-Nunc sollicitudin purus quis ante sodales luctus. Proin a scelerisque libero, vitae pharetra lacus. Nunc finibus, tellus et dictum semper, nisi sem accumsan ligula, et euismod quam ex a tellus. 
-
 
 
 ## BIBLIOGRAFÍA DE CONSULTA

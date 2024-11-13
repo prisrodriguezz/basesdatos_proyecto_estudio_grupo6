@@ -318,14 +318,19 @@ Los procedimientos almacenados se diseñaron para optimizar las operaciones de c
 A continuación, se presentan algunos ejemplos de estos procedimientos:
 
 - **Procedimiento: SP_InsertarProducto**<br>
+
 **Función:** Este procedimiento se utiliza para insertar un nuevo producto en la base de datos, verificando primero que no exista un producto con el mismo nombre, descripción y categoría. Esto garantiza que no haya duplicados en la tabla Producto<br>
+
 **Parámetros:**<br>
   @nombreProducto (VARCHAR(50)): Nombre del producto a insertar.<br>
   @descripcion (VARCHAR(100)): Descripción del producto.<br>
   @precio (FLOAT): Precio del producto.<br>
   @idCategoria (INT): ID de la categoría a la que pertenece el producto.<br>
+  
 **Ejecución y Resultados:** Este procedimiento ejecuta una verificación antes de realizar la inserción. Si no existe un producto con el mismo nombre, descripción y categoría, el producto será insertado correctamente en la tabla Producto. Si el producto ya existe, se muestra un mensaje de error. La eficiencia de este procedimiento radica en la prevención de duplicados y en la simplificación de la lógica de inserción, lo cual evita errores en la base de datos.<br>
+
 **Impacto en la eficiencia:** Asegura que no se realicen inserciones innecesarias y reduce el riesgo de errores al realizar consultas directas sin validación. Además, mejora la integridad de los datos mediante la validación previa.<br>
+
 **Ejemplo de codigo:**<br>
 ```
 CREATE PROCEDURE SP_InsertarProducto
@@ -362,12 +367,17 @@ END;
 <br>
 
 - **Procedimiento: SP_ModificarPrecioProducto**<br>
+
 **Función:** Este procedimiento permite modificar el precio de un producto existente en la base de datos. Antes de realizar la actualización, verifica si el producto con el ID proporcionado existe en la base de datos.<br>
+
 **Parámetros:**<br>
   @idProducto (INT): ID del producto cuyo precio se desea modificar.<br>
   @precio (FLOAT): Nuevo precio para el producto.<br>
+  
 **Ejecución y Resultados:** El procedimiento primero valida si el producto con el ID especificado existe. Si es así, actualiza el precio del producto en la tabla Producto. En caso de que el producto no exista, se muestra un mensaje de error. La eficiencia se ve reflejada en la validación antes de la actualización, evitando que se intente modificar un producto inexistente.<br>
+
 **Impacto en la eficiencia:** Garantiza que no se realicen actualizaciones innecesarias o sobre registros que no existen, lo que optimiza el manejo de datos y evita errores.<br>
+
 **Ejemplo de codigo:**<br>
 ```
 CREATE PROCEDURE SP_ModificarPrecioProducto
@@ -401,16 +411,21 @@ BEGIN TRY
 END;
 ```
 <br>
+
 - **FUNCIONES ALMACENADAS**<br>
 
 Las funciones almacenadas se han diseñado para realizar operaciones específicas de lectura y validación de datos, asegurando un acceso más rápido y seguro a los registros requeridos.<br>
 Los ejemplos a continuación muestran algunas de las funciones implementadas:
 
 - **Función: FN_CalcularTotalVenta**<br>
+
 **Propósito:** Esta función tiene como objetivo calcular el total de una venta basándose en los registros de la tabla VentaDetalle correspondientes a un número de facturación específico. Suma los valores de la columna subTotal para calcular el total de la venta.<br>
+
 **Parámetro de entrada:**<br>
  @nroFacturacion (INT): Número de facturación de la venta.<br>
+ 
 **Valor retornado:** Retorna un valor de tipo **FLOAT**, que representa el total de la venta (suma de los subtotales de los productos vendidos en esa facturación).<br>
+
 **Ejemplo de codigo:**<br>
 ```
 CREATE FUNCTION FN_CalcularTotalVenta (@nroFacturacion INT)
@@ -431,9 +446,13 @@ END;
 <br>
 
 - **Función: FN_ProductoMasVendido**<br>
+
 **Propósito:** Esta función tiene como objetivo devolver el producto más vendido, es decir, el producto con mayor cantidad vendida. Retorna los detalles del producto más vendido, incluyendo su nombre, precio, categoría y cantidad vendida.<br>
+
 **Parámetros de entrada:** Ninguno.<br>
+
 **Valor retornado:** Retorna un conjunto de resultados en formato de tabla que contiene la información del producto más vendido, con columnas como idProducto, nombreProducto, precio, Categoria y Cant Vendida.<br>
+
 **Ejemplo de codigo:**<br>
 ```
 CREATE FUNCTION FN_ProductoMasVendido()
@@ -456,13 +475,17 @@ RETURN
 ```
 
 <br>
+
 - **Función: FN_CalcularEdad**<br>
+
 **Propósito:** Esta función calcula la edad de un usuario en base a su fecha de nacimiento almacenada en la base de datos. La edad se calcula restando la fecha de nacimiento de la fecha actual.<br>
+
 **Parámetro de entrada:**<br>
  @idUsuario (INT): ID del usuario cuyo cálculo de edad se requiere.<br>
+ 
 **Valor retornado:** Retorna un valor de tipo INT que representa la edad del usuario.<br>
-**Ejemplo de codigo:** <br>
 
+**Ejemplo de codigo:** <br>
 ```
 CREATE FUNCTION FN_CalcularEdad (@idUsuario INT)
 RETURNS INT

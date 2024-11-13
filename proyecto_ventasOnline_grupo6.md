@@ -317,14 +317,20 @@ Como ya se ha dicho anteriormente los índices se encargan de optimización de d
 Al profundizar sobre la aplicación de los mismos siguiendo con la consigna de elegir una tabla que tenga un columna FECHA, nos decidimos por la de Usuario, ya que la misma tiene una de tipo date para la fecha de nacimiento del mismo.
 Previamente se procedió a evaluar que específicamente no exista un índice previo creado mediante la consulta:
 
-``` execute sp_helpindex 'Usuario'```
+``` 
+
+execute sp_helpindex 'Usuario'
+
+```
 
 Una vez corroborado la inexistencia se procedió a seguir con la consigna que expresa “Realizar una búsqueda por periodo”, se realizo la consulta siguiente:
 
-```   SELECT * 
+```  
+ SELECT * 
 FROM Usuario
 WHERE fechaNacimiento BETWEEN '1990-01-01' AND '1992-12-31'
-ORDER BY idCiudad, apellido; ```
+ORDER BY idCiudad, apellido; 
+```
 
 Para luego registrar lel plan de ejcucion del motor con los tiempos de respuesta SIN INDICE:
  
@@ -336,11 +342,15 @@ Observando un porcentaje de 66% y un tiempo de CPU de 804ms.
 
 
 Una vez esto, se procedió a la creación del índice incluyendo la columna fechaNacimiento, siendo el script el siguiente:
-```CREATE CLUSTERED INDEX IDX_Usuario_fechaNacimiento
-on Usuario (fechaNacimiento) ```
+```
+CREATE CLUSTERED INDEX IDX_Usuario_fechaNacimiento
+on Usuario (fechaNacimiento)
+ ```
 
 al que lo confirmamos con:
-```execute sp_helpindex 'Usuario'```
+```
+execute sp_helpindex 'Usuario'
+```
 
 Para proceder a ejecutar la consulta anterior, registrando los tiempos de ejcucion siguiente:
  
@@ -349,8 +359,10 @@ Demostrando un porcentaje de 13% y un tiempo de CPU de 649ms. Una marca inferior
 
 Borramos el índice creado, para a continuación realizar uno nuevo, también agrupado pero incluyendo la columna Nombre y idCiudad:
 
- ``` CREATE CLUSTERED INDEX IDX_Usuario_fechaNacimiento_idCiudad_apellido
-ON Usuario (fechaNacimiento, idCiudad, apellido);```
+ ```
+  CREATE CLUSTERED INDEX IDX_Usuario_fechaNacimiento_idCiudad_apellido
+ON Usuario (fechaNacimiento, idCiudad, apellido);
+```
 
 
 Para ejecutar nuevamente la consulta y demostrar los registros dados por la plataforma:

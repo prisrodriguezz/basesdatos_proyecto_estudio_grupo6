@@ -270,8 +270,7 @@ Las herramientas utilizadas fueron: pagina oficial de Microsoft (Microsoft Learn
 
 ## CAPÍTULO IV: DESARROLLO DEL TEMA / PRESENTACIÓN DE RESULTADOS 
 
-Maecenas molestie lacus tincidunt, placerat dolor et, ullamcorper erat. Mauris tortor nisl, ultricies ac scelerisque nec, feugiat in nibh. Pellentesque interdum aliquam magna sit amet rutrum. 
-
+El diagrama relacional de la base de datos tiendaOnline_BD permite gestionar eficientemente todos los aspectos necesarios para operar una tienda en línea. Se cubren funcionalidades clave como la gestión de productos, categorías, usuarios, consultas y ventas, utilizando un modelo de datos bien estructurado con claves primarias y foráneas que garantizan la integridad referencial. Las relaciones entre las tablas aseguran que los datos estén bien conectados y puedan ser consultados de manera eficiente, lo que facilita tanto la administración de la tienda como las operaciones de compra, consulta y pago.
 
 
 ### Diagrama relacional
@@ -616,6 +615,13 @@ No obstante, el uso de JSON implica ciertos desafíos de rendimiento, ya que acc
 
 
 ## CAPÍTULO V: CONCLUSIONES
+
+## CONCLUSIONES TEMA 1: MANEJO DE PERMISOS A NIVEL DE USUARIO DE BASE DE DATOS
+
+El desarrollo de las tareas relacionadas con el manejo de permisos y roles en bases de datos ha demostrado ser un proceso crucial para garantizar la seguridad y administración efectiva de los datos dentro de un sistema. 
+A través de la creación y gestión de usuarios, roles y permisos, hemos logrado establecer un control detallado sobre qué acciones pueden realizar diferentes usuarios en la base de datos.
+El manejo adecuado de permisos y roles es fundamental para la seguridad, eficiencia y administración de bases de datos. Esta tarea no solo refuerza la protección de los datos, sino que también optimiza el proceso de gestión de usuarios y accesos, lo que resulta esencial en entornos donde la integridad y la confidencialidad de la información son prioritarias. 
+Además, el uso de procedimientos almacenados y roles personalizados agrega un nivel adicional de flexibilidad y control, permitiendo que se puedan ejecutar operaciones específicas sin comprometer la seguridad ni la integridad del sistema.
 
 ### CONSLUIONES TEMA 3: OPTIMIZACIÓN DE CONSULTAS A TRAVES DE ÍNDICES:
 

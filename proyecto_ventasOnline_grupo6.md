@@ -318,7 +318,7 @@ Esta capacidad es útil en aplicaciones donde los datos tienen estructuras varia
 
 No obstante, el uso de JSON implica ciertos desafíos de rendimiento, ya que acceder a datos JSON suele ser más lento que a columnas tradicionales. La optimización, mediante índices y columnas calculadas, ayuda a mitigar este impacto, aunque su uso debe planificarse para evitar sobrecargar los sistemas de alta concurrencia o grandes volúmenes de datos.
 
-> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_4](script/tema04_manejoDeTipoDeDatoJSON)
+> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_4](script/tema4_manejoDeTipoDeDatoJSON/tema4_script.sql)
 
 
 ## CAPÍTULO V: CONCLUSIONES

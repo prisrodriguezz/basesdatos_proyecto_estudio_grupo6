@@ -135,3 +135,24 @@ WITH (
 Con OPENJSON y CROSS APPLY, SQL Server procesa todo el JSON en una sola operación,
 lo que es más eficiente y optimizado en comparación con hacer múltiples llamadas a JSON_VALUE.
 */
+
+------------------------------------------------
+-- MEDICION DE EFICIENCIA SOBRE DOS CONSULTAS
+------------------------------------------------
+
+set statistics time on;
+set statistics io on;
+select * from usuario; -- TIEMPO DE RESPUESTA DE UNA CONSULTA SOBRE UNA TABLA CON DATOS PRIMITIVOS
+set statistics time off;
+set statistics io off;
+
+set statistics time on;
+set statistics io on;
+select * from jsonPrueba_Usuario; -- TIEMPO DE RESPUESTA DE UNA CONSULTA SOBRE UNA TABLA CON DATOs EN JSON
+set statistics time off;
+set statistics io off;
+
+
+
+
+

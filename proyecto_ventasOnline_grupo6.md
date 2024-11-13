@@ -593,15 +593,13 @@ ON Usuario (fechaNacimiento, idCiudad, apellido);
 Para ejecutar nuevamente la consulta y demostrar los registros dados por la plataforma:
 
 
-emostrando un porcentaje de 13% y un tiempo de CPU de 648ms. Unos registros que demuestra, aunque de maner aminima en el timepo de CPU,
+Demostrando un porcentaje de 13% y un tiempo de CPU de 648ms. Unos registros que demuestra, aunque de maner aminima en el timepo de CPU,
 una mayor eficiencia en dicha consulta
  
 
 
 
-
-
-> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_2](script/tema02_nombre_tema)
+> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_3](script/tema3_OptimizacionIndices/Tema3_script)
 
 ### Desarrollo TEMA 4 "Manejo de tipo de dato JSON"
 

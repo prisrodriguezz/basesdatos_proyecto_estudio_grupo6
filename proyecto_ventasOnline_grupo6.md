@@ -533,7 +533,7 @@ En esta sección, se presentan los resultados de una comparación entre la efici
 
 En general, para operaciones sencillas, las consultas directas ofrecen un rendimiento superior debido a la menor sobrecarga que implican. Sin embargo, los procedimientos y funciones almacenadas son más adecuadas en escenarios donde se requiere seguridad, reutilización de código y control de acceso. La elección entre ambos enfoques depende de la complejidad de la operación y de las necesidades de seguridad y rendimiento del sistema.
 
-
+> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_2](script/tema3_OptimizacionIndices/Tema3_script)
 
 
 ### Desarrollo TEMA 3: OPTIMIZACIÓN DE CONSULTAS A TRAVES DE ÍNDICES 
@@ -618,10 +618,22 @@ No obstante, el uso de JSON implica ciertos desafíos de rendimiento, ya que acc
 
 El desarrollo de las tareas relacionadas con el manejo de permisos y roles en bases de datos ha demostrado ser un proceso crucial para garantizar la seguridad y administración efectiva de los datos dentro de un sistema. 
 A través de la creación y gestión de usuarios, roles y permisos, hemos logrado establecer un control detallado sobre qué acciones pueden realizar diferentes usuarios en la base de datos.
-El manejo adecuado de permisos y roles es fundamental para la seguridad, eficiencia y administración de bases de datos. Esta tarea no solo refuerza la protección de los datos, sino que también optimiza el proceso de gestión de usuarios y accesos, lo que resulta esencial en entornos donde la integridad y la confidencialidad de la información son prioritarias. 
+
+El manejo adecuado de permisos y roles es fundamental para la seguridad, eficiencia y administración de bases de datos. Esta tarea no solo refuerza la protección de los datos, sino que también optimiza el proceso de gestión de usuarios y accesos, lo que resulta esencial en entornos donde la integridad y la confidencialidad de la información son prioritarias.
+
 Además, el uso de procedimientos almacenados y roles personalizados agrega un nivel adicional de flexibilidad y control, permitiendo que se puedan ejecutar operaciones específicas sin comprometer la seguridad ni la integridad del sistema.
 
-### CONSLUIONES TEMA 3: OPTIMIZACIÓN DE CONSULTAS A TRAVES DE ÍNDICES:
+### CONCLUSIONES TEMA 2: PROCEDIMIENTOS Y FUNCIONES ALMACENADAS
+
+En este trabajo respecto a los procedimientos y funciones almacenadas en SQL Server, se investigo sobre cómo pueden mejorar la gestión y manipulación de datos en una base de datos. A lo largo del análisis, se destacó la capacidad de estos elementos para simplificar operaciones, reducir errores y garantizar la integridad de los datos, aunque también se observó que tienen un costo en términos de rendimiento en algunas situaciones.
+
+Al comparar el uso de procedimientos y funciones almacenadas con las consultas directas, vimos que para tareas simples como insertar o actualizar datos, las consultas directas son más rápidas porque no tienen la sobrecarga de los procedimientos. Sin embargo, los procedimientos y funciones almacenadas ofrecen ventajas importantes, como mayor seguridad, control de acceso y la posibilidad de reutilizar el código de forma más eficiente.
+
+En operaciones más complejas o cuando se trabaja con muchas consultas, los procedimientos y funciones almacenadas pueden ser una buena opción porque facilitan la gestión de datos y mejoran la organización del código. Aunque en algunos casos las funciones almacenadas pueden ser un poco más lentas, su capacidad para centralizar lógicas complejas y evitar errores vale la pena en sistemas grandes o en entornos con muchos usuarios.
+
+En resumen, la elección entre usar operaciones directas o procedimientos y funciones almacenadas depende de la situación. Si la prioridad es la rapidez en operaciones simples, las consultas directas son mejores, pero si se busca seguridad, facilidad de mantenimiento y reutilización de código, los procedimientos y funciones almacenadas son la mejor opción.
+
+### CONSLUSIONES TEMA 3: OPTIMIZACIÓN DE CONSULTAS A TRAVES DE ÍNDICES:
 
 En este estudio, se demostró el impacto significativo que los índices pueden tener en el rendimiento de las consultas en SQL Server Teniendo como base las consultas 
 realizadas con la tabla Usuario seleccionada
@@ -647,7 +659,7 @@ Todos ellos con sus ventajas, y siempre teniendo en cuenta para el caso en el qu
 Pero sin duda, los datos y los análisis realizados lo dejan en evidencia sin ningún tipo de discusión sobre el mismo.
 
 
-### CONCLUSIONES TEMA 4: mANEJO DE TIPO DE DATO JSON
+### CONCLUSIONES TEMA 4: MANEJO DE TIPO DE DATO JSON
 
 El manejo de JSON en SQL Server permite almacenar datos no estructurados junto con datos estructurados, ofreciendo flexibilidad ideal para información dinámica que cambia con frecuencia. Sin embargo, tiene limitaciones de rendimiento, ya que el acceso a datos JSON es más lento que el acceso a columnas tradicionales esto se puede observar en el tiempo de respuesta; por ello, su uso debe planearse cuidadosamente, especialmente en sistemas de alta concurrencia o con grandes volúmenes de datos.
 Para optimizar el rendimiento al trabajar con JSON en consultas frecuentes, se pueden emplear columnas calculadas e índices, que ayudan a mejorar la eficiencia de las operaciones comunes.

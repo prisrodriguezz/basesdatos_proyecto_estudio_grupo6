@@ -310,6 +310,13 @@ Se realizaron pruebas para asegurar que los permisos fueron correctamente asigna
 
 ### Desarrollo TEMA 2 "----"
 
+Proin aliquet mauris id ex venenatis, eget fermentum lectus malesuada. Maecenas a purus arcu. Etiam pellentesque tempor dictum. 
+
+
+
+
+
+### Desarrollo TEMA 3 OPTIMIZACIÓN DE CONSULTAS A TRAVES DE ÍNDICES 
 CAP 4
 A continuación se presentara los hallazgos de la investigación llevada a cabo cobre el mencionado tema.
 
@@ -371,6 +378,9 @@ Para ejecutar nuevamente la consulta y demostrar los registros dados por la plat
 emostrando un porcentaje de 13% y un tiempo de CPU de 648ms. Unos registros que demuestra, aunque de maner aminima en el timepo de CPU,
 una mayor eficiencia en dicha consulta
  
+
+
+
 
 
 > Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_2](script/tema02_nombre_tema)

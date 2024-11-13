@@ -533,7 +533,7 @@ En esta sección, se presentan los resultados de una comparación entre la efici
 
 En general, para operaciones sencillas, las consultas directas ofrecen un rendimiento superior debido a la menor sobrecarga que implican. Sin embargo, los procedimientos y funciones almacenadas son más adecuadas en escenarios donde se requiere seguridad, reutilización de código y control de acceso. La elección entre ambos enfoques depende de la complejidad de la operación y de las necesidades de seguridad y rendimiento del sistema.
 
-> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_2](script/Tema2_Procedimientos_Funciones_Almacenadas/script_procedimientosAlmacenados.sql)
+> Acceder a la siguiente carpeta para la descripción completa del tema [scripts-> tema_2](script/Tema2_Procedimientos_Funciones_Almacenadas)
 
 
 ### Desarrollo TEMA 3: OPTIMIZACIÓN DE CONSULTAS A TRAVES DE ÍNDICES 
